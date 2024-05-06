@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import s from './Card.module.scss';
+import { flipCard, matchCards } from './../../../redux//reducers/cardsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Card = ({ frontImage, backImage, handleCardClick }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+const Card = ({ id, frontImage, backImage, handleCardClick, canFlip, isFlipped }) => {
+  const dispatch = useDispatch()
 
-  const flipCard = () => {
-    setIsFlipped(!isFlipped);
+  const handleFlipCard = () => {
+    dispatch(flipCard(id))
     handleCardClick();
   };
 
   return (
-    <div className={`${s.card} ${isFlipped ? s.flipped : ''}`} onClick={flipCard}>
+    <div className={`${s.card} ${isFlipped ? s.flipped : ''} ${canFlip ? '' : s.banned_flip  }`} onClick={handleFlipCard}>
       <div className={s.card_inner}>
         <div className={s.card_front}>
           <img src={backImage} alt="Front" />

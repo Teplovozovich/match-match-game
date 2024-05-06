@@ -1,9 +1,12 @@
+@import "./../../../scss/main.module.scss";
+
 .card {
     width: 168px;
     height: 168px;
     margin: 5px;
     perspective: 1000px;
     transition: transform 0.6s;
+    cursor: pointer;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -12,9 +15,14 @@
             user-select: none;
   }
 
+.banned_flip {
+  pointer-events: none;
+}
+
   .card img {
     width: 168px;
     height: 168px;
+    border-radius: $border-radius-card;
   }
   
   .card_inner {
