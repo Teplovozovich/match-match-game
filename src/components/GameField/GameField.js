@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { flipCard, matchCards } from './../../redux//reducers/cardsSlice';
+import { enableFlipCard, flipCard, matchCards } from './../../redux//reducers/cardsSlice';
 import s from './GameField.module.scss';
 import Card from './Card/Card';
 
 const GameField = () => {
   const dispatch = useDispatch();
-  const cards = useSelector(state => state.cards);
+  const cards = useSelector(state => state.cards.cards);
+  const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
+
+  useEffect(() => {
+    if (isRotationDelay == true) {
+      setTimeout(() => {
+        dispatch(enableFlipCard())
+      }, 1150)
+      dispatch(matchCards())
+    }
+  }, cards)
 
   const handleCardClick = (id, groupId) => {
-    // const flippedCards = cards.filter(card => card.isFlipped && !card.isMatched);
-    // if (flippedCards.length < 2) {
-    //   dispatch(flipCard({ id })); // Переворачиваем карточку
-    //   dispatch(matchCards({ groupId })); // Проверяем совпадение карточек в группе
-    // }
+    
   };
 
   return (
