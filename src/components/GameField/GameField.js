@@ -13,29 +13,32 @@ const GameField = () => {
     if (isRotationDelay == true) {
       setTimeout(() => {
         dispatch(enableFlipCard())
-      }, 1150)
+      }, 800)
       dispatch(matchCards())
     }
   }, cards)
 
   const handleCardClick = (id, groupId) => {
-    
+    console.log("aaboba");
   };
 
   return (
-    <div className={s.game_field}>
-      {cards.map(card => (
-        <Card
-        key={card.id}
-        id={card.id}
-        frontImage={card.cardFont}
-        backImage={card.cardBack}
-        canFlip={card.canFlip}
-        isFlipped={card.isFlipped}
-        isMatched={card.isMatched}
-        handleCardClick={() => handleCardClick(card.id, card.groupId)}
-        />
-      ))}
+    <div >
+      <div className={s.game_field}>
+        {cards.map(card => (
+          <Card
+            key={card.id}
+            id={card.id}
+            frontImage={card.cardFont}
+            backImage={card.cardBack}
+            canFlip={card.canFlip}
+            isFlipped={card.isFlipped}
+            isMatched={card.isMatched}
+            handleCardClick={() => handleCardClick(card.id, card.groupId)}
+          />
+        ))}
+      </div>
+      <button onClick={handleCardClick}>Перемешать</button>
     </div>
   );
 };
