@@ -3,7 +3,7 @@ import s from './Card.module.scss';
 import { flipCard, matchCards } from './../../../redux//reducers/cardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Card = ({ id, frontImage, backImage, handleCardClick, canFlip, isFlipped, isMatched }) => {
+const Card = ({ id, groupId, frontImage, backImage, handleCardClick, canFlip, isFlipped, isMatched }) => {
   const dispatch = useDispatch()
 
   const handleFlipCard = () => {
@@ -22,7 +22,7 @@ const Card = ({ id, frontImage, backImage, handleCardClick, canFlip, isFlipped, 
           <img src={backImage} alt="Front" />
         </div>
         <div className={s.card_back}>
-          <img src={frontImage} alt="Back" />
+          {frontImage ? <img src={frontImage} alt="Back" /> : <div className={s.number}>{groupId}</div>}
         </div>
       </div>
     </div>

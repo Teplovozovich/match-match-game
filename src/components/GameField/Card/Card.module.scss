@@ -19,6 +19,7 @@
     height: 168px;
     position: relative;
     border-radius: $border-radius-card;
+    border: 1px solid $line-color;
     }
   }
 
@@ -66,6 +67,18 @@
 
 .card_front {
   z-index: 2;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 250%;
+  color: $text-color;
+  background-color: $secondary-color;
+  border-radius: $border-radius-card;
+  border: 1px solid $line-color;
 }
 
 .card_back {
