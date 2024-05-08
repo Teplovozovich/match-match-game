@@ -44,7 +44,7 @@ const GameField = () => {
   };
 
   return (
-    <div >
+    <div>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card
