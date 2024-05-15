@@ -19,13 +19,13 @@ const Card = ({ id, groupId, frontImage, backImage, handleCardClick, canFlip, is
       <div className={isMatched == true ? s.matched : ''}></div>
       <div className={`${s.card_inner}`}>
         <div className={`${s.card_front}`}>
-          <img src={backImage} alt="Front" />
+          <img src={backImage} alt="Рубашка" />
         </div>
         <div className={s.card_back}>
           {frontImage ?
-            <img src={frontImage} alt="Back" /> :
+            <img src={frontImage} alt={groupId} /> :
             <div>
-              <img src='assets/jpg/japan-back.jpg' className={s.number_card} />
+              <img src='assets/jpg/kosmo.jpg' className={s.number_card} />
               <p className={s.number}>{groupId}</p>
             </div>}
         </div>

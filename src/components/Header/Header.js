@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 import s from './Header.module.scss';
 
 const Header = () => {
-  render (
-    <div>
-
+  return (
+    <div className={s.header}>
+      <div>img</div>
+      <div>game</div>
+      <button>Старт</button>
     </div>
   )
 };

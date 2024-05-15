@@ -45,6 +45,7 @@ const GameField = () => {
 
   return (
     <div>
+      <button onClick={handleShuffleClick}>Перемешать</button>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card
@@ -60,7 +61,6 @@ const GameField = () => {
           />
         ))}
       </div>
-      <button onClick={handleShuffleClick}>Перемешать</button>
     </div>
   );
 };
