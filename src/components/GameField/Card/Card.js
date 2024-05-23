@@ -24,8 +24,8 @@ const Card = ({ id, groupId, frontImage, backImage, handleCardClick, canFlip, is
         <div className={s.card_back}>
           {frontImage ?
             <img src={frontImage} alt={groupId} /> :
-            <div>
-              <img src='assets/jpg/kosmo.jpg' className={s.number_card} />
+            <div className={s.number_card}>
+              <img src='assets/jpg/kosmo.jpg'/>
               <p className={s.number}>{groupId}</p>
             </div>}
         </div>

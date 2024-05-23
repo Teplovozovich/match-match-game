@@ -26,13 +26,13 @@ const GameField = () => {
 
   const handleShuffleClick = () => {
     // Генерация случайных пар карточек
-    const shuffledPairs = generateRandomPairs(10); // Генерация 10 случайных пар
+    const shuffledPairs = generateRandomPairs(15); // Генерация 10 случайных пар
 
     // Создание нового состояния для карточек
     const newCardsState = shuffledPairs.map((pair, index) => ({
       id: index + 1,
       cardFont: pair.frontImage,
-      cardBack: 'assets/jpg/japan-back.jpg',
+      cardBack: 'assets/jpg/back.jpg',
       canFlip: true,
       isFlipped: false,
       isMatched: false,
