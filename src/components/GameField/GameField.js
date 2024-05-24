@@ -32,7 +32,7 @@ const GameField = () => {
     const newCardsState = shuffledPairs.map((pair, index) => ({
       id: index + 1,
       cardFont: pair.frontImage,
-      cardBack: 'assets/jpg/back.jpg',
+      cardBack: './assets/jpg/back.jpg',
       canFlip: true,
       isFlipped: false,
       isMatched: false,
@@ -67,7 +67,7 @@ const GameField = () => {
 
 // Функция для генерации случайных пар карточек
 const generateRandomPairs = (numPairs) => {
-  const images = ['assets/jpg/pig.jpg', 'assets/jpg/rat.jpg', 'assets/jpg/bobr-kurwa.jpg', 'assets/jpg/belochka.jpg'];
+  const images = ['./assets/jpg/pig.jpg', './assets/jpg/rat.jpg', './assets/jpg/bobr-kurwa.jpg', './assets/jpg/belochka.jpg'];
   const pairs = [];
 
   for (let i = 0; i < numPairs; i++) {
