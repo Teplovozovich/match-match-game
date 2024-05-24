@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/match-match-game/static/css/main.b506fe87.css",
-    "main.js": "/match-match-game/static/js/main.60a2f709.js",
+    "main.js": "/match-match-game/static/js/main.03caa426.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
     "static/media/settings-active.svg": "/match-match-game/static/media/settings-active.e4ef14a6be12747b6095.svg",
     "static/media/settings.svg": "/match-match-game/static/media/settings.b3b0482eb6667fbad267.svg",
     "index.html": "/match-match-game/index.html",
     "main.b506fe87.css.map": "/match-match-game/static/css/main.b506fe87.css.map",
-    "main.60a2f709.js.map": "/match-match-game/static/js/main.60a2f709.js.map",
+    "main.03caa426.js.map": "/match-match-game/static/js/main.03caa426.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b506fe87.css",
-    "static/js/main.60a2f709.js"
+    "static/js/main.03caa426.js"
   ]
 }
