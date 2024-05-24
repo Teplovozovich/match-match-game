@@ -32,7 +32,7 @@ const GameField = () => {
     const newCardsState = shuffledPairs.map((pair, index) => ({
       id: index + 1,
       cardFont: pair.frontImage,
-      cardBack: './assets/jpg/back.jpg',
+      cardBack: 'assets/jpg/back.jpg',
       canFlip: true,
       isFlipped: false,
       isMatched: false,
