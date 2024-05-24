@@ -12,25 +12,14 @@ const Header = () => {
           <p className={s.logo_text}>MATCH</p>
           <p className={`${s.logo_text} ${s.below}`}>MATCH</p>
         </div>
-        <NavLink to="/game-field"><button className={s.button}>Старт</button></NavLink>
-
-          <NavLink className={s.settings} to="/settings">
-            <img
-              src='/assets/svg/settings.svg'
-              onMouseOver={e => (e.currentTarget.src = "/assets/svg/settings-active.svg")}
-              onMouseOut={e => (e.currentTarget.src = "/assets/svg/settings.svg")}
-              onTouchStart={e => {
-                e.currentTarget.src = "/assets/svg/settings-active.svg";
-                e.preventDefault(); // Prevent unexpected mouse events after touch
-              }}
-              onTouchEnd={e => {
-                e.currentTarget.src = "/assets/svg/settings.svg";
-                e.preventDefault(); // Prevent unexpected mouse events after touch
-              }}
-            // onMouseDown={e => (e.currentTarget.src = "/assets/svg/settings-active.svg")}
-            // onMouseUp={e => (e.currentTarget.src = "/assets/svg/settings.svg")}
-            />
+        <NavLink to="/game-field" className={s.button_wrapper}>
+          <button className={s.button}>Старт</button>
+        </NavLink>
+        <div className={s.settings}>
+          <NavLink to="/settings" className={s.settings_wrap}>
+            <p className={s.img}></p>
           </NavLink>
+        </div>
 
       </div>
     </div>

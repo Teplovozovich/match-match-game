@@ -33,10 +33,17 @@
   cursor: pointer;
 }
 
+.button_wrapper {
+  display: flex;
+  align-items: center;
+  height: 80%;
+  width: 12%;
+}
+
 .button {
   flex-grow: 0;
-  width: 12%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   background-color: $btn-active-color;
   color: $btn-active-text-color;
   border-radius: $border-radius-main;
@@ -63,24 +70,44 @@
   color: $btn-active-text-color;
 }
 
+.settings_wrap {
+  height: 100%;
+  width: fit-content;
+}
+
 .settings {
-  text-align: end;
+  display: flex;
+  justify-content: end;
   width: 10%;
   height: 80%;
-  & img {
-    cursor: pointer;
-  };
 }
+
+.img {
+  height: 4vh;
+  width: 4vh;
+  cursor: pointer;
+  background-image: url(./../../../public/assets/svg/settings.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+};
 
 @media (hover: hover) {
   .button:hover {
     background-color: $btn-active-hover-color;
+  }
+
+  .img:hover {
+    background-image: url(./../../../public/assets/svg/settings-active.svg);
   }
 }
 
 @media (hover: none) {
   .button:active {
     background-color: $btn-active-hover-color;
+  }
+
+  .img:active {
+    background-image: url(./../../../public/assets/svg/settings-active.svg);
   }
 }
 
@@ -137,7 +164,7 @@
     font-size: 16px;
   }
 
-  .button {
+  .button_wrapper {
     width: 150px;
     font-size: 16px;
   }
@@ -149,7 +176,6 @@
   }
 
   .button {
-    width: 150px;
     font-size: 1.8vh;
   }
 }
