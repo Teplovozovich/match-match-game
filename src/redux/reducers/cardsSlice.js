@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import imagePathsRodent from './images.js';
 
 const initialState = {
   cards: [{
@@ -15,7 +16,11 @@ const initialState = {
   isGameGoingOn: false
 };
 
-const images = ['./assets/jpg/pig.jpg', './assets/jpg/rat.jpg', './assets/jpg/bobr-kurwa.jpg', './assets/jpg/belochka.jpg'];
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+const images = imagePathsRodent;
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -63,7 +68,6 @@ const cardsSlice = createSlice({
     },
     shuffleCards: (state) => {
       const shuffledPairs = generateRandomPairs(10);
-
       state.cards = shuffledPairs.map((pair, index) => ({
         id: index + 1,
         cardFont: pair.frontImage,
@@ -79,10 +83,12 @@ const cardsSlice = createSlice({
 
 const generateRandomPairs = (numPairs) => {
   const pairs = [];
+  const imagePaths = images.slice();
+  console.log(imagePathsRodent);
 
   for (let i = 0; i < numPairs; i++) {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    const frontImage = images.splice(randomIndex, 1)[0];
+    const randomIndex = Math.floor(Math.random() * imagePaths.length);
+    const frontImage = imagePaths.splice(randomIndex, 1)[0]; // Удаляем элемент из копии
     pairs.push({ frontImage, groupId: i + 1 });
     pairs.push({ frontImage, groupId: i + 1 });
   }
