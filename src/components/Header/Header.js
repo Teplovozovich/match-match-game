@@ -21,7 +21,7 @@ const Header = () => {
           <p className={`${s.logo_text} ${s.below}`}>MATCH</p>
         </div>
         <NavLink to="/game-field" className={s.button_wrapper}>
-          <button className={s.button} onClick={() => dispatch(shuffleCards())}>Старт</button>
+          <button className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
         </NavLink>
         <div className={s.settings}>
           <NavLink to="/settings" className={s.settings_wrap}>

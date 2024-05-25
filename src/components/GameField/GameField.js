@@ -22,18 +22,20 @@ const GameField = () => {
     }
   }, [isRotationDelay]);
 
-  const handleCardClick = (id, groupId) => {
-    console.log("aaboba");
-  };
+  useEffect(() => {
+    dispatch(shuffleCards())
+  }, [])
+
+
 
   const handleShuffleClick = () => {
-    dispatch(shuffleCards()); 
+    dispatch(shuffleCards());
   };
 
   return (
     <div>
-        <p>Ходов: {sumMotions}</p>
-        <p>Правильных: {sumMatched}</p>
+      <p>Ходов: {sumMotions}</p>
+      <p>Правильных: {sumMatched}</p>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card
@@ -45,7 +47,7 @@ const GameField = () => {
             canFlip={card.canFlip}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}
-            handleCardClick={() => handleCardClick(card.id, card.groupId)}
+
           />
         ))}
       </div>

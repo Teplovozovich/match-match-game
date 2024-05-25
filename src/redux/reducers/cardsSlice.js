@@ -31,6 +31,13 @@ const cardsSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
+    firstRender(state) {
+      if (state.chosenBackCardSide !== null) {
+
+      } else {
+        state.chosenBackCardSide = state.cards[0].cardBack
+      }
+    },
     flipCard(state, action) {
       state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
       state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
@@ -80,10 +87,18 @@ const cardsSlice = createSlice({
     setCards(state, action) {
       state.cards = action.payload
     },
+    setSumCards(state, action) {
+      state.sumCards = action.payload
+    },
     setBackSideCard(state, action) {
       state.chosenBackCardSide = action.payload
+      state.sumMatched = 0;
+      state.sumMotions = 0;
     },
     shuffleCards: (state) => {
+      state.sumMatched = 0;
+      state.sumMotions = 0;
+
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
 
       state.backsCardSide = imagePathsBackSideCard;
@@ -127,5 +142,5 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
   console.log('aboba');
 };
 
-export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards, setBackSideCard } = cardsSlice.actions;
+export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards, setBackSideCard, setSumCards } = cardsSlice.actions;
 export default cardsSlice.reducer;
