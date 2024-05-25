@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import imagePathsRodent from './images.js';
+import {imagePathsRodent} from './images.js';
 
 const initialState = {
   cards: [{
