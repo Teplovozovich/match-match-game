@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {imagePathsRodent} from './images.js';
+import { imagePathsBackSideCard, imagePathsRodent } from './images.js';
 
 const initialState = {
   cards: [{
@@ -12,15 +12,20 @@ const initialState = {
     groupId: null,
   }
   ],
+  backsCardSide: [],
+  chosenBackCardSide: null,
   isRotationDelay: false,
-  isGameGoingOn: false
+  isGameGoingOn: false,
+  sumCards: 10,
+  sumMotions: 0,
+  sumMatched: 0,
 };
 
 function importAll(r) {
   return r.keys().map(r);
 }
 
-const images = imagePathsRodent;
+const images = imagePathsBackSideCard;
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -36,6 +41,14 @@ const cardsSlice = createSlice({
         });
         state.isRotationDelay = true;
       }
+      console.log(state.cards[0].cardBack);
+      if (state.chosenBackCardSide !== null) {
+
+      } else {
+        state.chosenBackCardSide = state.cards[0].cardBack
+      }
+
+      state.sumMotions += 1
     },
     enableFlipCard(state, action) {
       state.cards.forEach((card) => {
@@ -58,6 +71,7 @@ const cardsSlice = createSlice({
           firstCard.isMatched = true;
           secondCard.isMatched = true;
           console.log("aboba");
+          state.sumMatched += 1;
         } else {
 
         }
@@ -66,12 +80,18 @@ const cardsSlice = createSlice({
     setCards(state, action) {
       state.cards = action.payload
     },
+    setBackSideCard(state, action) {
+      state.chosenBackCardSide = action.payload
+    },
     shuffleCards: (state) => {
-      const shuffledPairs = generateRandomPairs(10);
+      const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
+
+      state.backsCardSide = imagePathsBackSideCard;
+      const shuffledPairs = generateRandomPairs(state.sumCards);
       state.cards = shuffledPairs.map((pair, index) => ({
         id: index + 1,
         cardFont: pair.frontImage,
-        cardBack: 'assets/jpg/back.jpg',
+        cardBack: backCardSide,
         canFlip: true,
         isFlipped: false,
         isMatched: false,
@@ -84,7 +104,6 @@ const cardsSlice = createSlice({
 const generateRandomPairs = (numPairs) => {
   const pairs = [];
   const imagePaths = images.slice();
-  console.log(imagePathsRodent);
 
   for (let i = 0; i < numPairs; i++) {
     const randomIndex = Math.floor(Math.random() * imagePaths.length);
@@ -108,5 +127,5 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
   console.log('aboba');
 };
 
-export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards } = cardsSlice.actions;
+export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards, setBackSideCard } = cardsSlice.actions;
 export default cardsSlice.reducer;

@@ -1,13 +1,24 @@
-// В вашем файле GameField.js
-
 import React, { useEffect, useState } from 'react';
 import s from './SettingsPage.module.scss';
-import { NavLink, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBackSideCard } from '../../redux/reducers/cardsSlice';
+
 
 const SettingsPage = () => {
+  const backs = useSelector((state) => state.cards.backsCardSide)
+  const dispatch = useDispatch();
+  console.log(backs);
+
+  const handleClick = (e) => {
+    const chosenBack = e.target.getAttribute('src');
+    dispatch(setBackSideCard(chosenBack))
+  }
+
   return (
     <div>
-      aboba
+      {backs.map(back => (
+        <img className={s.back_side_card} src={back} onClick={handleClick}/>
+      ))}
     </div>
   )
 };

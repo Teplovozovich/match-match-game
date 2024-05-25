@@ -9,6 +9,8 @@ import Card from './Card/Card';
 const GameField = () => {
   const dispatch = useDispatch();
   const cards = useSelector(state => state.cards.cards);
+  const sumMotions = useSelector(state => state.cards.sumMotions);
+  const sumMatched = useSelector(state => state.cards.sumMatched);
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
 
   useEffect(() => {
@@ -30,6 +32,8 @@ const GameField = () => {
 
   return (
     <div>
+        <p>Ходов: {sumMotions}</p>
+        <p>Правильных: {sumMatched}</p>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card

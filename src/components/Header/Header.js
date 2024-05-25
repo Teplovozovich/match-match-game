@@ -9,6 +9,10 @@ import { shuffleCards } from '../../redux/reducers/cardsSlice';
 const Header = () => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(shuffleCards())
+  }, [])
+
   return (
     <div className={s.header_wrapper}>
       <div className={s.header}>
