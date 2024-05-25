@@ -1,10 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  cards: [],
-  isRotationDelay: false
+  cards: [{
+    id: null,
+    cardFont: null,
+    cardBack: null,
+    canFlip: null,
+    isFlipped: null,
+    isMatched: null,
+    groupId: null,
+  }
+  ],
+  isRotationDelay: false,
+  isGameGoingOn: false
 };
 
+const images = ['./assets/jpg/pig.jpg', './assets/jpg/rat.jpg', './assets/jpg/bobr-kurwa.jpg', './assets/jpg/belochka.jpg'];
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -49,13 +60,47 @@ const cardsSlice = createSlice({
     },
     setCards(state, action) {
       state.cards = action.payload
-    }
+    },
+    shuffleCards: (state) => {
+      const shuffledPairs = generateRandomPairs(10);
+
+      state.cards = shuffledPairs.map((pair, index) => ({
+        id: index + 1,
+        cardFont: pair.frontImage,
+        cardBack: 'assets/jpg/back.jpg',
+        canFlip: true,
+        isFlipped: false,
+        isMatched: false,
+        groupId: pair.groupId,
+      }));
+    },
   },
 });
+
+const generateRandomPairs = (numPairs) => {
+  const pairs = [];
+
+  for (let i = 0; i < numPairs; i++) {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    const frontImage = images.splice(randomIndex, 1)[0];
+    pairs.push({ frontImage, groupId: i + 1 });
+    pairs.push({ frontImage, groupId: i + 1 });
+  }
+
+  return shuffleArray(pairs);
+};
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 export const getCounterThunk = (personalAccount) => async (dispatch) => {
   console.log('aboba');
 };
 
-export const { setCards, flipCard, matchCards, enableFlipCard } = cardsSlice.actions;
+export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards } = cardsSlice.actions;
 export default cardsSlice.reducer;

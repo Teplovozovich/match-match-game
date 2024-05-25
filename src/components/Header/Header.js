@@ -3,8 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import s from './Header.module.scss';
 import { NavLink, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { shuffleCards } from '../../redux/reducers/cardsSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className={s.header_wrapper}>
       <div className={s.header}>
@@ -13,7 +17,7 @@ const Header = () => {
           <p className={`${s.logo_text} ${s.below}`}>MATCH</p>
         </div>
         <NavLink to="/game-field" className={s.button_wrapper}>
-          <button className={s.button}>Старт</button>
+          <button className={s.button} onClick={() => dispatch(shuffleCards())}>Старт</button>
         </NavLink>
         <div className={s.settings}>
           <NavLink to="/settings" className={s.settings_wrap}>
