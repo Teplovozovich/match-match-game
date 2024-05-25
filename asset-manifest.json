@@ -1,17 +1,25 @@
 {
   "files": {
     "main.css": "/match-match-game/static/css/main.b506fe87.css",
-    "main.js": "/match-match-game/static/js/main.03caa426.js",
+    "main.js": "/match-match-game/static/js/main.c79cce7f.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
+    "static/media/kosmo.jpg": "/match-match-game/static/media/kosmo.ec7ed1aaf0e171c075d0.jpg",
+    "static/media/back.jpg": "/match-match-game/static/media/back.073055821b6ab5bea26c.jpg",
+    "static/media/pig.jpg": "/match-match-game/static/media/pig.42760715a5794bf1d2cd.jpg",
+    "static/media/belochka.jpg": "/match-match-game/static/media/belochka.7145a24bbfb821dc0064.jpg",
+    "static/media/bobr-kurwa.jpg": "/match-match-game/static/media/bobr-kurwa.a699fdb7ab458e48cadc.jpg",
+    "static/media/rat.jpg": "/match-match-game/static/media/rat.0f4d207c175d79febbf4.jpg",
+    "static/media/counter-day.jpg": "/match-match-game/static/media/counter-day.c2e15e7dcd5c7b32fe1d.jpg",
+    "static/media/japan-back.jpg": "/match-match-game/static/media/japan-back.f053a2d4d805b3fd2ecd.jpg",
     "static/media/settings-active.svg": "/match-match-game/static/media/settings-active.e4ef14a6be12747b6095.svg",
     "static/media/settings.svg": "/match-match-game/static/media/settings.b3b0482eb6667fbad267.svg",
     "index.html": "/match-match-game/index.html",
     "main.b506fe87.css.map": "/match-match-game/static/css/main.b506fe87.css.map",
-    "main.03caa426.js.map": "/match-match-game/static/js/main.03caa426.js.map",
+    "main.c79cce7f.js.map": "/match-match-game/static/js/main.c79cce7f.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b506fe87.css",
-    "static/js/main.03caa426.js"
+    "static/js/main.c79cce7f.js"
   ]
 }
