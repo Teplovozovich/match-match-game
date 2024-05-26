@@ -34,8 +34,8 @@ const GameField = () => {
 
   return (
     <div>
-      <p>Ходов: {sumMotions}</p>
-      <p>Правильных: {sumMatched}</p>
+      <p>Переворачиваний: {sumMotions}</p>
+      <p>Совпало: {sumMatched}</p>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card
