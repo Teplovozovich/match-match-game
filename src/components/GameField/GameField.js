@@ -22,10 +22,6 @@ const GameField = () => {
     }
   }, [isRotationDelay]);
 
-  const handleShuffleClick = () => {
-    dispatch(shuffleCards());
-  };
-
   return (
     <div>
       <p>Переворачиваний: {sumMotions}</p>

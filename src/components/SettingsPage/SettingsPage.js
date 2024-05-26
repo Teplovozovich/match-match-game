@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import s from './SettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBackSideCard, setSumCards } from '../../redux/reducers/cardsSlice';
+import { setBackSideCard, setSumCards, shuffleCards } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
-import { setCardCount, setSelectedBack } from '../../redux/reducers/settingsSlice';
+import { setCardCount, setCardCountFromBtn, setSelectedBack } from '../../redux/reducers/settingsSlice';
 
 const SettingsPage = () => {
   const backs = useSelector((state) => state.cards.backsCardSide);
   const selectedBack = useSelector((state) => state.settings.selectedBack);
   const cardCount = useSelector((state) => state.settings.cardCount);
+  const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
   const dispatch = useDispatch();
 
   const handleBackSideCardClick = (e) => {
@@ -23,12 +24,17 @@ const SettingsPage = () => {
   }
 
   const handleButtinClick = (e) => {
-    console.log('Количество карточек:', cardCount);
-    if (cardCount > 4999 || cardCount < 2) {
-      alert("Вы ввели недопустимое количество")
+    console.log('Количество карточек:', cardCountFromBtn);
+    if (cardCount > 4999 || cardCount < 2 && cardCountFromBtn === 0) {
+      alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
     } else {
-      dispatch(setSumCards(cardCount));
+      dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
+      dispatch(shuffleCards());
     }
+  }
+
+  const handleAmountButtonClick = (e) => {
+    dispatch(setCardCountFromBtn(e.target.textContent));
   }
 
   return (
@@ -54,16 +60,17 @@ const SettingsPage = () => {
         </div>
       </div>
       <div className={s.amount_card__section}>
-        <p>Выберете количество пар:</p>
+        <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>
-          <button className={s.amount_button}>3</button>
-          <button className={s.amount_button}>5</button>
-          <button className={s.amount_button}>10</button>
-          <button className={s.amount_button}>12</button>
-          <button className={s.amount_button}>15</button>
+          <button className={s.amount_button} onClick={handleAmountButtonClick}>3</button>
+          <button className={s.amount_button} onClick={handleAmountButtonClick}>5</button>
+          <button className={s.amount_button} onClick={handleAmountButtonClick}>10</button>
+          <button className={s.amount_button} onClick={handleAmountButtonClick}>12</button>
+          <button className={s.amount_button} onClick={handleAmountButtonClick}>15</button>
         </div>
+        <p>Или введите свое значение</p>
         <input type="number" value={cardCount} onChange={handleInputChange} />
-        <button onClick={handleButtinClick}>выбрать</button>
+        <button className={`${s.amount_button} ${s.button_accept}`} onClick={handleButtinClick}>Выбрать и перемешать</button>
       </div>
     </div>
   )

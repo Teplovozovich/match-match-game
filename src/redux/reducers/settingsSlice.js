@@ -4,6 +4,7 @@ import { imagePathsBackSideCard, imagePathsRodent } from './images.js';
 const initialState = {
   selectedBack: null,
   cardCount: '',
+  cardCountFromBtn: 0,
 };
 
 
@@ -16,11 +17,16 @@ const cardsSlice = createSlice({
     },
     setCardCount(state, action) {
       state.cardCount = action.payload
+      state.cardCountFromBtn = 0
+    },
+    setCardCountFromBtn(state, action) {
+      state.cardCountFromBtn = action.payload
+      state.cardCount = ''
     },
   },
 });
 
 
 
-export const { setSelectedBack, setCardCount } = cardsSlice.actions;
+export const { setSelectedBack, setCardCount, setCardCountFromBtn } = cardsSlice.actions;
 export default cardsSlice.reducer;

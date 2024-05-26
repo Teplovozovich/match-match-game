@@ -60,6 +60,10 @@
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  & p {
+    font-size: 1.5vw;
+
+  }
 }
 
 .amount_buttons_block {
@@ -71,14 +75,27 @@
 .amount_button {
   height: fit-content;
   min-height: 30px;
-  width: 4vw;
+  width: fit-content;
   min-width: 30px;
   margin: 0 1vw 20px 1vw;
+  text-align: center;
   color: $btn-active-text-color;
   background-color: $btn-active-color;
   border-radius: $border-radius-main;
   border: none;
   font-size: 1.5vw;
+}
+
+.amount_button:active {
+  background-color: $btn-active-hover-color;
+}
+
+.button_accept {
+  height: fit-content;
+  min-height: 35px;
+  width: fit-content;
+  min-width: 230px;
+  margin-top: 15px;
 }
 
 @media (max-width: 540px ) {
@@ -92,18 +109,35 @@
     height: $card-mobile-size + 2px;
   }
 }
-@media (min-width: 540px){
+@media (max-width: 840px){
+  .back_side__section p {
+    font-size: 16px;
+  }
+
+  .amount_card__section p {
+    font-size: 16px;
+  }
+
+  .amount_button {
+    font-size: 16px;
+  }
 }
 @media (min-width: 720px) and (max-width: 960px) {
   
 }
 @media (max-height: 800px) {
-  .back_side__section p {
-    font-size: 16px;
-  }
-  .amount_card__section p {
-    font-size: 16px;
-  }
 }
 @media (min-width: 1140px) {
+}
+
+@media (hover: hover) {
+  .amount_card__section .amount_button:hover {
+    background-color: $btn-active-hover-color;
+  }
+}
+
+@media (hover: none) {
+  .amount_card__section .amount_button:active {
+    background-color: $btn-active-hover-color;
+  }
 }
