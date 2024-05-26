@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 300px;
+    -webkit-overflow-scrolling: touch; /* для плавной прокрутки на мобильных устройствах */
+  }
+
+  .slide {
+    flex: none;
+    scroll-snap-align: start;
+    width: 300px;
+    text-align: center;
+  }
