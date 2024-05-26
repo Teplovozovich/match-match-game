@@ -91,13 +91,16 @@ const cardsSlice = createSlice({
       state.sumCards = action.payload
     },
     setBackSideCard(state, action) {
-      state.chosenBackCardSide = action.payload
-      state.sumMatched = 0;
-      state.sumMotions = 0;
+      state.chosenBackCardSide = action.payload;
+      state.cards = state.cards.map((card) => ({
+        ...card,
+        cardBack: action.payload,
+      }));
     },
     shuffleCards: (state) => {
       state.sumMatched = 0;
       state.sumMotions = 0;
+      state.isGameGoingOn = true;
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
 

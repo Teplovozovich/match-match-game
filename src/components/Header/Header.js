@@ -2,14 +2,17 @@
 
 import React, { useEffect, useState } from 'react';
 import s from './Header.module.scss';
-import { NavLink, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { NavLink, Navigate, useLocation, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { shuffleCards } from '../../redux/reducers/cardsSlice';
 
 const Header = () => {
+  const location = useLocation(); // Use useLocation to access the current URL
   const dispatch = useDispatch();
+  const isGameGoingOn = useSelector((state) => state.cards.isGameGoingOn)
 
   useEffect(() => {
+    console.log(location.pathname);
     dispatch(shuffleCards())
   }, [])
 
@@ -20,9 +23,16 @@ const Header = () => {
           <p className={s.logo_text}>MATCH</p>
           <p className={`${s.logo_text} ${s.below}`}>MATCH</p>
         </div>
-        <NavLink to="/game-field" className={s.button_wrapper}>
-          <button className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
-        </NavLink>
+
+        {location.pathname === '/game-field' ?
+          <NavLink to="/game-field" className={s.button_wrapper}>
+            <button className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
+          </NavLink> :
+
+          <NavLink to="/game-field" className={s.button_wrapper}>
+            <button className={s.button}>Вернуться</button>
+          </NavLink>
+        }
         <div className={s.settings}>
           <NavLink to="/settings" className={s.settings_wrap}>
             <p className={s.img}></p>

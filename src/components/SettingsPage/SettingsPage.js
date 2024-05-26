@@ -53,10 +53,18 @@ const SettingsPage = () => {
           ))}
         </div>
       </div>
-
-      <p>Введите количество пар:</p>
-      <input type="number" value={cardCount} onChange={handleInputChange} />
-      <button onClick={handleButtinClick}>выбрать</button>
+      <div className={s.amount_card__section}>
+        <p>Выберете количество пар:</p>
+        <div className={s.amount_buttons_block}>
+          <button className={s.amount_button}>3</button>
+          <button className={s.amount_button}>5</button>
+          <button className={s.amount_button}>10</button>
+          <button className={s.amount_button}>12</button>
+          <button className={s.amount_button}>15</button>
+        </div>
+        <input type="number" value={cardCount} onChange={handleInputChange} />
+        <button onClick={handleButtinClick}>выбрать</button>
+      </div>
     </div>
   )
 };

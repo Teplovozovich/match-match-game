@@ -22,12 +22,6 @@ const GameField = () => {
     }
   }, [isRotationDelay]);
 
-  useEffect(() => {
-    dispatch(shuffleCards())
-  }, [])
-
-
-
   const handleShuffleClick = () => {
     dispatch(shuffleCards());
   };
