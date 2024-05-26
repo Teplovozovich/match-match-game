@@ -47,7 +47,6 @@ const GameField = () => {
             canFlip={card.canFlip}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}
-
           />
         ))}
       </div>
