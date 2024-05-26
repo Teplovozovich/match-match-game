@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/match-match-game/static/css/main.8ea00376.css",
-    "main.js": "/match-match-game/static/js/main.2630e589.js",
+    "main.css": "/match-match-game/static/css/main.64fa0c63.css",
+    "main.js": "/match-match-game/static/js/main.5250997b.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
     "static/media/kosmo.jpg": "/match-match-game/static/media/kosmo.ec7ed1aaf0e171c075d0.jpg",
     "static/media/jpg": "/match-match-game/static/media/c6630c3f848293d1fd5001ea267b36af.4a0a55a18ca4d1592989.jpg",
@@ -13,7 +13,7 @@
     "static/media/pig.jpg": "/match-match-game/static/media/pig.42760715a5794bf1d2cd.jpg",
     "static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.jpg": "/match-match-game/static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.3591b7d25f62f80f8bec.jpg",
     "static/media/belochka.jpg": "/match-match-game/static/media/belochka.7145a24bbfb821dc0064.jpg",
-    "static/media/scale_1200.jpg": "/match-match-game/static/media/scale_1200.8a5abc27a57b6a209c7a.jpg",
+    "static/media/scale_1200.jpg": "/match-match-game/static/media/scale_1200.6249fb897ec05b1d43d4.jpg",
     "static/media/bobr-kurwa.jpg": "/match-match-game/static/media/bobr-kurwa.a699fdb7ab458e48cadc.jpg",
     "static/media/rat.jpg": "/match-match-game/static/media/rat.0f4d207c175d79febbf4.jpg",
     "static/media/counter-day.jpg": "/match-match-game/static/media/counter-day.c2e15e7dcd5c7b32fe1d.jpg",
@@ -21,12 +21,12 @@
     "static/media/settings-active.svg": "/match-match-game/static/media/settings-active.e4ef14a6be12747b6095.svg",
     "static/media/settings.svg": "/match-match-game/static/media/settings.b3b0482eb6667fbad267.svg",
     "index.html": "/match-match-game/index.html",
-    "main.8ea00376.css.map": "/match-match-game/static/css/main.8ea00376.css.map",
-    "main.2630e589.js.map": "/match-match-game/static/js/main.2630e589.js.map",
+    "main.64fa0c63.css.map": "/match-match-game/static/css/main.64fa0c63.css.map",
+    "main.5250997b.js.map": "/match-match-game/static/js/main.5250997b.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ea00376.css",
-    "static/js/main.2630e589.js"
+    "static/css/main.64fa0c63.css",
+    "static/js/main.5250997b.js"
   ]
 }
