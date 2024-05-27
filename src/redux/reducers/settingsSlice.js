@@ -4,6 +4,29 @@ import { imagePathsBackSideCard, imagePathsRodent } from './images.js';
 const initialState = {
   selectedBack: null,
   cardCount: '',
+  amountButtons: [
+    {
+      style: '',
+      amount: 3,
+    },
+    {
+      style: '',
+      amount: 5,
+    },
+    {
+      style: '',
+      amount: 10,
+    },
+    {
+      style: '',
+      amount: 12,
+    },
+    {
+      style: '',
+      amount: 15,
+    },
+
+  ],
   cardCountFromBtn: 0,
 };
 
@@ -20,9 +43,17 @@ const cardsSlice = createSlice({
       state.cardCountFromBtn = 0
     },
     setCardCountFromBtn(state, action) {
-      state.cardCountFromBtn = action.payload
-      state.cardCount = ''
-    },
+      state.amountButtons = state.amountButtons.map((button) => {
+        if (+action.payload === button.amount) {
+          console.log("aboba");
+          return { ...button, style: "selected" };
+        } else {
+          return { ...button, style: "" };
+        }
+      });
+      state.cardCountFromBtn = action.payload;
+      state.cardCount = "";
+    }
   },
 });
 

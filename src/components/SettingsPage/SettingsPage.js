@@ -9,6 +9,7 @@ const SettingsPage = () => {
   const backs = useSelector((state) => state.cards.backsCardSide);
   const selectedBack = useSelector((state) => state.settings.selectedBack);
   const cardCount = useSelector((state) => state.settings.cardCount);
+  const amountButtons = useSelector((state) => state.settings.amountButtons);
   const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
   const dispatch = useDispatch();
 
@@ -39,12 +40,6 @@ const SettingsPage = () => {
 
   return (
     <div className={s.settings}>
-      {/* <div class="container">
-        <div class="slide"><p>Первый слайд</p></div>
-        <div class="slide"><p>Первый слайд</p></div>
-        <div class="slide"><p>Первый слайд</p></div>
-      </div> */}
-      {/* <img src='./assets/svg/checkmark.svg'/> */}
       <div className={s.back_side__section}>
         <p>Выберите обложку карточек</p>
         <div className={s.back_side_card_wrapper}>
@@ -62,11 +57,10 @@ const SettingsPage = () => {
       <div className={s.amount_card__section}>
         <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>
-          <button className={s.amount_button} onClick={handleAmountButtonClick}>3</button>
-          <button className={s.amount_button} onClick={handleAmountButtonClick}>5</button>
-          <button className={s.amount_button} onClick={handleAmountButtonClick}>10</button>
-          <button className={s.amount_button} onClick={handleAmountButtonClick}>12</button>
-          <button className={s.amount_button} onClick={handleAmountButtonClick}>15</button>
+          {amountButtons.map(button => (
+            <button className={`${s.amount_button} ${button.style && s.selected_button}`}
+             onClick={handleAmountButtonClick}>{button.amount}</button>
+          ))}
         </div>
         <p>Или введите свое значение</p>
         <input type="number" value={cardCount} onChange={handleInputChange} />
