@@ -25,9 +25,13 @@ const initialState = {
       style: '',
       amount: 15,
     },
+    {
+      style: '',
+      amount: 20,
+    },
 
   ],
-  cardCountFromBtn: 0,
+  cardCountFromBtn: false,
 };
 
 
@@ -40,6 +44,9 @@ const cardsSlice = createSlice({
     },
     setCardCount(state, action) {
       state.cardCount = action.payload
+      state.amountButtons = state.amountButtons.map((button) => {
+        return { ...button, style: "" };
+      });
       state.cardCountFromBtn = 0
     },
     setCardCountFromBtn(state, action) {

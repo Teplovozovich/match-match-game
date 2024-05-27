@@ -28,6 +28,8 @@ const SettingsPage = () => {
     console.log('Количество карточек:', cardCountFromBtn);
     if (cardCount > 4999 || cardCount < 2 && cardCountFromBtn === 0) {
       alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
+    } else if (cardCount === '' && cardCountFromBtn === false){
+      dispatch(shuffleCards());
     } else {
       dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
       dispatch(shuffleCards());
@@ -63,7 +65,7 @@ const SettingsPage = () => {
           ))}
         </div>
         <p>Или введите свое значение</p>
-        <input type="number" value={cardCount} onChange={handleInputChange} />
+        <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='40' />
         <button className={`${s.amount_button} ${s.button_accept}`} onClick={handleButtinClick}>Выбрать и перемешать</button>
       </div>
     </div>

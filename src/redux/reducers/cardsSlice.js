@@ -119,7 +119,7 @@ const cardsSlice = createSlice({
   },
 });
 
-const generateRandomPairs = (numPairs) => {
+const generateRandomPairs = (numPairs = 10) => {
   const pairs = [];
   const imagePaths = images.slice();
 
