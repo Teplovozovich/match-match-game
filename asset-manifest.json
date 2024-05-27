@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/match-match-game/static/css/main.5c663601.css",
-    "main.js": "/match-match-game/static/js/main.04994171.js",
+    "main.js": "/match-match-game/static/js/main.806bbd3b.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
     "static/media/jpg": "/match-match-game/static/media/c6630c3f848293d1fd5001ea267b36af.4a0a55a18ca4d1592989.jpg",
     "static/media/1642801749_20-abrakadabra-fun-p-yaponskie-uzori-na-kimono-31.jpg": "/match-match-game/static/media/1642801749_20-abrakadabra-fun-p-yaponskie-uzori-na-kimono-31.cfea627bbab99053a3db.jpg",
@@ -20,11 +20,11 @@
     "index.html": "/match-match-game/index.html",
     "static/media/checkmark.svg": "/match-match-game/static/media/checkmark.d916961e04b5f466942b.svg",
     "main.5c663601.css.map": "/match-match-game/static/css/main.5c663601.css.map",
-    "main.04994171.js.map": "/match-match-game/static/js/main.04994171.js.map",
+    "main.806bbd3b.js.map": "/match-match-game/static/js/main.806bbd3b.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5c663601.css",
-    "static/js/main.04994171.js"
+    "static/js/main.806bbd3b.js"
   ]
 }
