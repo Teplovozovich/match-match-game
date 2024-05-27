@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { imagePathsBackSideCard, imagePathsRodent } from './images.js';
+import { imagePathsBackSideCard, imagePathsRodent, imagePathsFood } from './images.js';
 
 const initialState = {
   cards: [{
@@ -12,9 +12,9 @@ const initialState = {
     groupId: null,
   }
   ],
-  backsCardSide: [],
-  
+  imagesGroups: [imagePathsRodent, imagePathsFood],
   chosenFrontCardSide: null,
+  backsCardSide: [],
   chosenBackCardSide: null,
   isRotationDelay: false,
   isGameGoingOn: false,
@@ -121,8 +121,6 @@ const cardsSlice = createSlice({
 
 const generateRandomPairs = (numPairs = 10, images) => {
   const pairs = [];
-  console.log(imagePathsRodent);
-  console.log(imagePathsRodent.slice());
   const imagePaths = imagePathsRodent.slice();
   // const imagePaths = images.slice();
 

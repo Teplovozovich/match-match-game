@@ -7,6 +7,8 @@ import { setCardCount, setCardCountFromBtn, setSelectedBack } from '../../redux/
 
 const SettingsPage = () => {
   const backs = useSelector((state) => state.cards.backsCardSide);
+  const fronts = useSelector((state) => state.cards.imagesGroups);
+
   const selectedBack = useSelector((state) => state.settings.selectedBack);
   const cardCount = useSelector((state) => state.settings.cardCount);
   const amountButtons = useSelector((state) => state.settings.amountButtons);
@@ -34,6 +36,7 @@ const SettingsPage = () => {
       dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
       dispatch(shuffleCards());
     }
+    console.log(fronts);
   }
 
   const handleAmountButtonClick = (e) => {
@@ -51,6 +54,22 @@ const SettingsPage = () => {
                 src={back}
                 onClick={handleBackSideCardClick}
               />
+              <div className={`${selectedBack === back ? s.back_side_card_selected : ''}`}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={s.back_side__section}>
+        <p>Выберите группу</p>
+        <div className={s.back_side_card_wrapper}>
+          {fronts.map(back => (
+            <div key={back} className={`${s.back_side_card}`}>
+              {back.map(aboba => (
+                <img
+                  src={back}
+                  onClick={handleBackSideCardClick}
+                />
+              ))}
               <div className={`${selectedBack === back ? s.back_side_card_selected : ''}`}></div>
             </div>
           ))}
