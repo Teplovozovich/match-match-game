@@ -1,4 +1,4 @@
-const rodent = require.context('./../../../public/assets/jpg', true, /\.jpg$/);
+const rodent = require.context('./../../../public/assets/images/rodent', true, /\.jpg$/);
 const backSideCard = require.context('./../../../public/assets/images/back-side-card', true, /\.jpg$/);
 
 const imagePathsBackSideCard = backSideCard.keys().map(image => {

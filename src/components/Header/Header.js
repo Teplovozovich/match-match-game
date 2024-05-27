@@ -14,6 +14,7 @@ const Header = () => {
   useEffect(() => {
     console.log(location.pathname);
     dispatch(shuffleCards())
+    dispatch(shuffleCards())
   }, [])
 
   return (
