@@ -13,6 +13,7 @@ const initialState = {
   }
   ],
   backsCardSide: [],
+  
   chosenBackCardSide: null,
   isRotationDelay: false,
   isGameGoingOn: false,
@@ -24,8 +25,6 @@ const initialState = {
 function importAll(r) {
   return r.keys().map(r);
 }
-
-const images = imagePathsBackSideCard;
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -121,7 +120,7 @@ const cardsSlice = createSlice({
 
 const generateRandomPairs = (numPairs = 10) => {
   const pairs = [];
-  const imagePaths = images.slice();
+  const imagePaths = imagePathsBackSideCard.slice();
 
   for (let i = 0; i < numPairs; i++) {
     const randomIndex = Math.floor(Math.random() * imagePaths.length);

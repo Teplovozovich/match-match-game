@@ -107,14 +107,20 @@
   min-height: 20px;
   width: fit-content;
   min-width: 222px;
+  padding: 5px 0 5px 10px;
   margin-top: 10px;
   border: 1px solid #B1B1B7;
   border-radius: $border-radius-main;
   font-size: 1.5vw;
+  outline: none;
 }
 
 .input::placeholder{
   color: #B1B1B7;
+}
+
+.input:focus {
+  border: 1px solid $btn-active-color;
 }
 
 @media (max-width: 540px ) {
@@ -138,6 +144,10 @@
   }
 
   .amount_button {
+    font-size: 16px;
+  }
+
+  .input {
     font-size: 16px;
   }
 }

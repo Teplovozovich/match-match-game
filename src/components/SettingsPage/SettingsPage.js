@@ -60,7 +60,7 @@ const SettingsPage = () => {
         <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>
           {amountButtons.map(button => (
-            <button className={`${s.amount_button} ${button.style && s.selected_button}`}
+            <button key={button} className={`${s.amount_button} ${button.style && s.selected_button}`}
              onClick={handleAmountButtonClick}>{button.amount}</button>
           ))}
         </div>

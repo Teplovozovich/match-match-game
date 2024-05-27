@@ -47,7 +47,11 @@ const cardsSlice = createSlice({
       state.amountButtons = state.amountButtons.map((button) => {
         return { ...button, style: "" };
       });
-      state.cardCountFromBtn = 0
+      if (action.payload === '') {
+        state.cardCountFromBtn = false
+      } else {
+        state.cardCountFromBtn = 0
+      }
     },
     setCardCountFromBtn(state, action) {
       state.amountButtons = state.amountButtons.map((button) => {
