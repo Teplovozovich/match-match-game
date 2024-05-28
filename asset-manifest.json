@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/match-match-game/static/css/main.5c663601.css",
-    "main.js": "/match-match-game/static/js/main.a8482845.js",
+    "main.css": "/match-match-game/static/css/main.b006122e.css",
+    "main.js": "/match-match-game/static/js/main.d3adc3b8.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
+    "static/media/kosmo.jpg": "/match-match-game/static/media/kosmo.ec7ed1aaf0e171c075d0.jpg",
     "static/media/jpg": "/match-match-game/static/media/c6630c3f848293d1fd5001ea267b36af.4a0a55a18ca4d1592989.jpg",
     "static/media/1642801749_20-abrakadabra-fun-p-yaponskie-uzori-na-kimono-31.jpg": "/match-match-game/static/media/1642801749_20-abrakadabra-fun-p-yaponskie-uzori-na-kimono-31.cfea627bbab99053a3db.jpg",
+    "static/media/af-afq2image.jpg": "/match-match-game/static/media/af-afq2image.1a4ef78d2ef198c9ec08.jpg",
     "static/media/image.jpg": "/match-match-game/static/media/image.48633c75cdcb01644158.jpg",
     "static/media/back.jpg": "/match-match-game/static/media/back.073055821b6ab5bea26c.jpg",
     "static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m.jpg": "/match-match-game/static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m.16a816166e5a1068564f.jpg",
@@ -14,9 +16,12 @@
     "static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.jpg": "/match-match-game/static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.3591b7d25f62f80f8bec.jpg",
     "static/media/belochka.jpg": "/match-match-game/static/media/belochka.7145a24bbfb821dc0064.jpg",
     "static/media/scale_1200.jpg": "/match-match-game/static/media/scale_1200.6249fb897ec05b1d43d4.jpg",
+    "static/media/223.jpg": "/match-match-game/static/media/223.cd58f99f6fe79d756f0b.jpg",
     "static/media/bobr-kurwa.jpg": "/match-match-game/static/media/bobr-kurwa.a699fdb7ab458e48cadc.jpg",
+    "static/media/700-nw.jpg": "/match-match-game/static/media/700-nw.5c0ab2431489813680d4.jpg",
     "static/media/ (1).jpg": "/match-match-game/static/media/c9e0b6989cf0cdfa5be613fa9ae02539 (1).6137e2171a0b11f44832.jpg",
     "static/media/ponchiki-glazuryu.jpg": "/match-match-game/static/media/ponchiki-glazuryu.148fa05b4af7e5c0d88d.jpg",
+    "static/media/6666.jpg": "/match-match-game/static/media/6666.fe479b530b7ad19c0189.jpg",
     "static/media/rat.jpg": "/match-match-game/static/media/rat.0f4d207c175d79febbf4.jpg",
     "static/media/3942168.jpg": "/match-match-game/static/media/3942168.21eb06e442bc9a4d6093.jpg",
     "static/media/1644637763_4-klublady-ru-p-otkusannii-ponchik-foto-4.jpg": "/match-match-game/static/media/1644637763_4-klublady-ru-p-otkusannii-ponchik-foto-4.3b77383b7a7a7c6fcd53.jpg",
@@ -24,16 +29,19 @@
     "static/media/1695971576_gas-kvas-com-p-kartinki-bobra-26.jpg": "/match-match-game/static/media/1695971576_gas-kvas-com-p-kartinki-bobra-26.a42beaa10e96ce42029d.jpg",
     "static/media/1678681139_3-70.jpg": "/match-match-game/static/media/1678681139_3-70.12de16232951ba296e3e.jpg",
     "static/media/kartinku_krasivuiu_krysy_45.jpg": "/match-match-game/static/media/kartinku_krasivuiu_krysy_45.06492d9a72f392c8af97.jpg",
+    "static/media/3333.jpg": "/match-match-game/static/media/3333.84cb075851434576188d.jpg",
+    "static/media/111.jpg": "/match-match-game/static/media/111.22e89f196121a1d29cbd.jpg",
+    "static/media/4444.jpg": "/match-match-game/static/media/4444.26a55c8dbcf9721a2c54.jpg",
     "static/media/settings-active.svg": "/match-match-game/static/media/settings-active.e4ef14a6be12747b6095.svg",
     "static/media/settings.svg": "/match-match-game/static/media/settings.b3b0482eb6667fbad267.svg",
     "index.html": "/match-match-game/index.html",
     "static/media/checkmark.svg": "/match-match-game/static/media/checkmark.d916961e04b5f466942b.svg",
-    "main.5c663601.css.map": "/match-match-game/static/css/main.5c663601.css.map",
-    "main.a8482845.js.map": "/match-match-game/static/js/main.a8482845.js.map",
+    "main.b006122e.css.map": "/match-match-game/static/css/main.b006122e.css.map",
+    "main.d3adc3b8.js.map": "/match-match-game/static/js/main.d3adc3b8.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c663601.css",
-    "static/js/main.a8482845.js"
+    "static/css/main.b006122e.css",
+    "static/js/main.d3adc3b8.js"
   ]
 }
