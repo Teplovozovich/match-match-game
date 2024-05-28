@@ -1,7 +1,23 @@
 @import "./../../scss/main.module.scss";
+
+.game_field__page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .game_field {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  // background-color: $active-color;
+}
+
+.upper_game_field_block__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+.upper_game_field_right_block {
+  align-items: end;
 }

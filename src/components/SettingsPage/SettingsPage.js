@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard, setSelectedBackgroundSideCard } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
 import { setCardCount, setCardCountFromBtn, setSelectedBack, setSelectedBackground, setSelectedFront } from '../../redux/reducers/settingsSlice';
+import Switch from '../Common/Switch/Switch';
 
 const SettingsPage = () => {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const SettingsPage = () => {
   const handleSwitchChange = (event) => {
     console.log("aboba");
     // setIsFreeOnly(event.target.checked);
-}
+  }
 
   return (
     <div className={s.settings}>
@@ -115,6 +116,11 @@ const SettingsPage = () => {
         </div>
         <p>Или введите свое значение</p>
         <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='40' />
+        <div>
+          <Switch />
+          <Switch />
+          <Switch />
+        </div>
         <button className={`${s.amount_button} ${s.button_accept}`} onClick={handleButtinClick}>Выбрать и перемешать</button>
       </div>
       <div className={s.back_side__section}>
@@ -134,10 +140,10 @@ const SettingsPage = () => {
       <div className={s.textSwitch}>
         <p>Только свободные</p>
         <label className={s.switch_btn}>
-        <div className='switch_container'>
-            <input  type="checkbox" id="switch"></input>
+          <div className='switch_container'>
+            <input type="checkbox" id="switch"></input>
             <label htmlFor="switch" className="switch-label"></label>
-        </div>
+          </div>
         </label>
       </div>
     </div>

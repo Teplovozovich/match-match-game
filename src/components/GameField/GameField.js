@@ -25,9 +25,17 @@ const GameField = () => {
   }, [isRotationDelay]);
 
   return (
-    <div>
-      <p>Переворачиваний: {sumMotions}</p>
-      <p>Совпало: {sumMatched}</p>
+    <div className={s.game_field__page}>
+      <div className={s.upper_game_field_block__wrapper}>
+        <div className={s.upper_game_field_left__block}>
+          <p>Ходов: {sumMotions}</p>
+          <p>Совпало: {sumMatched}</p>
+        </div>
+        <div className={s.upper_game_field_right_block}>
+          <p>Ходов: {sumMotions}</p>
+          <p>Совпало: {sumMatched}</p>
+        </div>
+      </div>
       <div className={s.game_field}>
         {cards.map(card => (
           <Card
