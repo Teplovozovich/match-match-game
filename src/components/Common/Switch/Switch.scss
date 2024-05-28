@@ -1,0 +1,61 @@
+.switch-label {
+    display: flex;
+    width: 33px; /* ширина переключателя */
+    height: 14px; /* высота переключателя */
+    border-radius: 12px; /* радиус скругления */
+    background: #DCDCDF; /* цвет фона */
+    cursor: pointer;
+    position: relative;
+}
+
+#switch{
+    display: none;
+}
+.switch-label::before {
+    content: "";
+    height: 20px; /* высота кнопки */
+    width: 20px; /* ширина кнопки */
+    border-radius: 18px; /* радиус кнопки */
+    background: #F7F7F7; /* цвет кнопки */
+    top: -3px; /* положение кнопки по вертикали относительно основы */
+    left: -3px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 300ms; /* анимация */
+    box-shadow: 0 0 3px 0 #999999; /* тень */
+    position: absolute;
+}
+
+.switch-label::after {
+    content: "";
+    font-weight: bold;
+    color: #999;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.switch-label:hover::after {
+    color: #666;
+}
+
+#switch:checked + .switch-label {
+    background: #60C2AA;
+}
+
+#switch:checked + .switch-label::before {
+    left: 15px;
+    background: #3BA189;
+}
+
+#switch:checked + .switch-label::after {
+    content: "";
+    color: #118c4e;
+    right: auto;
+    left: 10px;
+}
+
+.switch_container{
+    display: flex;
+    
+}

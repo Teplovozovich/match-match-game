@@ -121,6 +121,11 @@ const cardsSlice = createSlice({
       if (state.chosenFrontCardSide === null) {
         chosenFrontCardSide = state.imagesGroups[Math.floor(Math.random() * state.imagesGroups.length)]
       }
+      
+      if (state.chosenFrontCardSide === null) {
+        state.chosenBackground = state.backgrounds[Math.floor(Math.random() * state.backgrounds.length)]
+      }
+
       const shuffledPairs = generateRandomPairs(state.sumCards, chosenFrontCardSide);
       state.cards = shuffledPairs.map((pair, index) => ({
         id: index + 1,

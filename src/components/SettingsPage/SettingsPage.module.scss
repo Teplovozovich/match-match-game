@@ -129,6 +129,13 @@
   border: 1px solid $btn-active-color;
 }
 
+.textSwitch{
+  display: flex;
+  align-items: center;
+  width: 189px;
+  justify-content: space-between;
+}
+
 @media (max-width: 540px ) {
   .back_side_card {
     width: $card-mobile-size;
@@ -175,6 +182,10 @@
     width: 340px;
     margin-top: 15px;
     border-radius: 10px;
+  }
+
+  .selected_button {
+    background-color: $btn-active-hover-color;
   }
 
   .input {

@@ -31,13 +31,13 @@ const SettingsPage = () => {
     console.log('Количество карточек:', cardCountFromBtn);
     if (cardCount > 4999 || cardCount < 2 && cardCountFromBtn === 0) {
       alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
-    } else if (cardCount === '' && cardCountFromBtn === false){
+    } else if (cardCount === '' && cardCountFromBtn === false) {
       dispatch(shuffleCards());
-      navigate('/game-field'); 
+      navigate('/game-field');
     } else {
       dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
       dispatch(shuffleCards());
-      navigate('/game-field'); 
+      navigate('/game-field');
     }
   }
 
@@ -66,6 +66,11 @@ const SettingsPage = () => {
     dispatch(setCardCountFromBtn(e.target.textContent));
   }
 
+  const handleSwitchChange = (event) => {
+    console.log("aboba");
+    // setIsFreeOnly(event.target.checked);
+}
+
   return (
     <div className={s.settings}>
       <div className={s.back_side__section}>
@@ -89,9 +94,9 @@ const SettingsPage = () => {
             <div key={index} className={`${s.back_side_card}`} onClick={() => handleFrontSideCardClick(front)}>
               {front.map(aboba => (
                 <img
-                key={aboba}
+                  key={aboba}
                   src={aboba}
-                  
+
                 />
               ))}
               <div className={`${selectedFront === front ? s.back_side_card_selected : ''}`}></div>
@@ -99,13 +104,13 @@ const SettingsPage = () => {
           ))}
         </div>
       </div>
-      
+
       <div className={s.amount_card__section}>
         <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>
           {amountButtons.map(button => (
             <button key={button.amount} className={`${s.amount_button} ${button.style && s.selected_button}`}
-             onClick={handleAmountButtonClick}>{button.amount}</button>
+              onClick={handleAmountButtonClick}>{button.amount}</button>
           ))}
         </div>
         <p>Или введите свое значение</p>
@@ -125,6 +130,15 @@ const SettingsPage = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className={s.textSwitch}>
+        <p>Только свободные</p>
+        <label className={s.switch_btn}>
+        <div className='switch_container'>
+            <input  type="checkbox" id="switch"></input>
+            <label htmlFor="switch" className="switch-label"></label>
+        </div>
+        </label>
       </div>
     </div>
   )
