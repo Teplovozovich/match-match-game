@@ -97,15 +97,23 @@ const cardsSlice = createSlice({
         cardBack: action.payload,
       }));
     },
+    setFrontSideCard(state, action) {
+      console.log(action.payload);
+      state.chosenFrontCardSide = action.payload;
+    },
     shuffleCards: (state) => {
       state.sumMatched = 0;
       state.sumMotions = 0;
       state.isGameGoingOn = true;
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
-
       state.backsCardSide = imagePathsBackSideCard;
-      const shuffledPairs = generateRandomPairs(state.sumCards, state.chosenFrontCardSide);
+
+      let chosenFrontCardSide = state.chosenFrontCardSide;
+      if (state.chosenFrontCardSide === null) {
+        chosenFrontCardSide = state.imagesGroups[Math.floor(Math.random() * state.imagesGroups.length)]
+      }
+      const shuffledPairs = generateRandomPairs(state.sumCards, chosenFrontCardSide);
       state.cards = shuffledPairs.map((pair, index) => ({
         id: index + 1,
         cardFont: pair.frontImage,
@@ -121,8 +129,8 @@ const cardsSlice = createSlice({
 
 const generateRandomPairs = (numPairs = 10, images) => {
   const pairs = [];
-  const imagePaths = imagePathsRodent.slice();
-  // const imagePaths = images.slice();
+  // const imagePaths = imagePathsRodent.slice();
+  const imagePaths = images.slice();
 
   for (let i = 0; i < numPairs; i++) {
     const randomIndex = Math.floor(Math.random() * imagePaths.length);
@@ -146,5 +154,6 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
   console.log('aboba');
 };
 
-export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards, setBackSideCard, setSumCards } = cardsSlice.actions;
+export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards,
+  setBackSideCard, setSumCards, setFrontSideCard } = cardsSlice.actions;
 export default cardsSlice.reducer;

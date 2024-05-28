@@ -8,12 +8,12 @@ const imagePathsBackSideCard = backSideCard.keys().map(image => {
 });
 
 const imagePathsRodent = rodent.keys().map(image => {
-    const imagePath = "assets/jpg" + image;
+    const imagePath = "assets/images/rodent" + image;
     return imagePath.replace("./", '/');
 });
 
 const imagePathsFood = food.keys().map(image => {
-    const imagePath = "assets/jpg" + image;
+    const imagePath = "assets/images/food" + image;
     return imagePath.replace("./", '/');
 });
 

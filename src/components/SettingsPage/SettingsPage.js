@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './SettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBackSideCard, setSumCards, shuffleCards } from '../../redux/reducers/cardsSlice';
+import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
 import { setCardCount, setCardCountFromBtn, setSelectedBack } from '../../redux/reducers/settingsSlice';
 
@@ -14,12 +14,6 @@ const SettingsPage = () => {
   const amountButtons = useSelector((state) => state.settings.amountButtons);
   const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
   const dispatch = useDispatch();
-
-  const handleBackSideCardClick = (e) => {
-    const chosenBack = e.target.getAttribute('src');
-    dispatch(setSelectedBack(chosenBack))
-    dispatch(setBackSideCard(chosenBack));
-  }
 
   const handleInputChange = (e) => {
     const count = e.target.value;
@@ -37,6 +31,20 @@ const SettingsPage = () => {
       dispatch(shuffleCards());
     }
     console.log(fronts);
+  }
+
+  const handleBackSideCardClick = (e) => {
+    const chosenBack = e.target.getAttribute('src');
+    dispatch(setSelectedBack(chosenBack))
+    dispatch(setBackSideCard(chosenBack));
+  }
+
+  const handleFrontSideCardClick = (images) => {
+    console.log(images);
+    dispatch(setFrontSideCard(images))
+    // const chosenFront = e.target.getAttribute('src');
+    // dispatch(setSelectedBack(chosenFront))
+    // dispatch(setBackSideCard(chosenFront));
   }
 
   const handleAmountButtonClick = (e) => {
@@ -63,11 +71,12 @@ const SettingsPage = () => {
         <p>Выберите группу</p>
         <div className={s.back_side_card_wrapper}>
           {fronts.map(back => (
-            <div key={back} className={`${s.back_side_card}`}>
+            <div key={back} className={`${s.back_side_card}`} onClick={() => handleFrontSideCardClick(back)}>
               {back.map(aboba => (
                 <img
-                  src={back}
-                  onClick={handleBackSideCardClick}
+                key={aboba}
+                  src={back[0]}
+                  
                 />
               ))}
               <div className={`${selectedBack === back ? s.back_side_card_selected : ''}`}></div>
