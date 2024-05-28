@@ -90,6 +90,20 @@ const SettingsPage = () => {
           ))}
         </div>
       </div>
+      <div className={s.back_side__section}>
+        <p>Выберите фон для чисел</p>
+        <div className={s.back_side_card_wrapper}>
+          {backs.map(back => (
+            <div key={back} className={`${s.back_side_card}`}>
+              <img
+                src={back}
+                onClick={handleBackSideCardClick}
+              />
+              <div className={`${selectedBack === back ? s.back_side_card_selected : ''}`}></div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className={s.amount_card__section}>
         <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>

@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { imagePathsBackSideCard, imagePathsRodent, imagePathsFood } from './images.js';
+import {
+  imagePathsBackSideCard, imagePathsBackgrounds,
+  imagePathsRodent, imagePathsFood,
+} from './images.js';
 
 const initialState = {
   cards: [{
     id: null,
     cardFont: null,
+    cardBack: null,
     cardBack: null,
     canFlip: null,
     isFlipped: null,
@@ -12,10 +16,12 @@ const initialState = {
     groupId: null,
   }
   ],
-  imagesGroups: [imagePathsRodent, imagePathsFood, ],
+  imagesGroups: [imagePathsRodent, imagePathsFood,],
   chosenFrontCardSide: null,
   backsCardSide: [],
   chosenBackCardSide: null,
+  backgrounds: [],
+  chosenBackgrounds: null,
   isRotationDelay: false,
   isGameGoingOn: false,
   sumCards: 10,
