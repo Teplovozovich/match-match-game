@@ -3,6 +3,7 @@ import { imagePathsBackSideCard, imagePathsRodent } from './images.js';
 
 const initialState = {
   selectedBack: null,
+  selectedBackground: null,
   selectedFront: null,
   cardCount: '',
   amountButtons: [
@@ -43,9 +44,11 @@ const cardsSlice = createSlice({
     setSelectedBack(state, action) {
       state.selectedBack = action.payload
     },
+    setSelectedBackground(state, action) {
+      state.selectedBackground = action.payload
+    },
     setSelectedFront(state, action) {
       state.selectedFront = action.payload
-      console.log(action.payload);
     },
     setCardCount(state, action) {
       state.cardCount = action.payload
@@ -75,5 +78,5 @@ const cardsSlice = createSlice({
 
 
 
-export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront } = cardsSlice.actions;
+export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront, setSelectedBackground } = cardsSlice.actions;
 export default cardsSlice.reducer;

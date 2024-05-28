@@ -12,7 +12,6 @@ const Header = () => {
   const isGameGoingOn = useSelector((state) => state.cards.isGameGoingOn)
 
   useEffect(() => {
-    console.log(location.pathname);
     dispatch(shuffleCards())
     dispatch(shuffleCards())
   }, [])

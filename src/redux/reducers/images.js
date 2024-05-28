@@ -9,7 +9,7 @@ const imagePathsBackSideCard = backSideCard.keys().map(image => {
     return imagePath.replace("./", '/');
 });
 
-const imagePathsBackgrounds = backSideCard.keys().map(image => {
+const imagePathsBackgrounds = backgrounds.keys().map(image => {
     const imagePath = "assets/images/numbers-background" + image;
     return imagePath.replace("./", '/');
 });

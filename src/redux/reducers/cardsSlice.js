@@ -9,7 +9,6 @@ const initialState = {
     id: null,
     cardFont: null,
     cardBack: null,
-    cardBack: null,
     canFlip: null,
     isFlipped: null,
     isMatched: null,
@@ -20,8 +19,8 @@ const initialState = {
   chosenFrontCardSide: null,
   backsCardSide: [],
   chosenBackCardSide: null,
-  backgrounds: [],
-  chosenBackgrounds: null,
+  backgrounds: imagePathsBackgrounds,
+  chosenBackground: null,
   isRotationDelay: false,
   isGameGoingOn: false,
   sumCards: 10,
@@ -103,6 +102,9 @@ const cardsSlice = createSlice({
         cardBack: action.payload,
       }));
     },
+    setSelectedBackgroundSideCard(state, action) {
+      state.chosenBackground = action.payload;
+    },
     setFrontSideCard(state, action) {
       console.log(action.payload);
       state.chosenFrontCardSide = action.payload;
@@ -161,5 +163,5 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
 };
 
 export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards,
-  setBackSideCard, setSumCards, setFrontSideCard } = cardsSlice.actions;
+  setBackSideCard, setSumCards, setFrontSideCard, setSelectedBackgroundSideCard} = cardsSlice.actions;
 export default cardsSlice.reducer;

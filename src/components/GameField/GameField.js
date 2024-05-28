@@ -9,11 +9,13 @@ import Card from './Card/Card';
 const GameField = () => {
   const dispatch = useDispatch();
   const cards = useSelector(state => state.cards.cards);
+  const background = useSelector(state => state.cards.chosenBackground);
   const sumMotions = useSelector(state => state.cards.sumMotions);
   const sumMatched = useSelector(state => state.cards.sumMatched);
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
 
   useEffect(() => {
+    console.log(background);
     if (isRotationDelay) {
       setTimeout(() => {
         dispatch(enableFlipCard());
@@ -34,6 +36,7 @@ const GameField = () => {
             groupId={card.groupId}
             frontImage={card.cardFont}
             backImage={card.cardBack}
+            background={background}
             canFlip={card.canFlip}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}
