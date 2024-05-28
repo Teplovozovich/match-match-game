@@ -12,7 +12,7 @@ const initialState = {
     groupId: null,
   }
   ],
-  imagesGroups: [imagePathsRodent, imagePathsFood],
+  imagesGroups: [imagePathsRodent, imagePathsFood, ],
   chosenFrontCardSide: null,
   backsCardSide: [],
   chosenBackCardSide: null,

@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import s from './SettingsPage.module.scss';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
-import { setCardCount, setCardCountFromBtn, setSelectedBack } from '../../redux/reducers/settingsSlice';
+import { setCardCount, setCardCountFromBtn, setSelectedBack, setSelectedFront } from '../../redux/reducers/settingsSlice';
 
 const SettingsPage = () => {
+  const navigate = useNavigate();
+
   const backs = useSelector((state) => state.cards.backsCardSide);
   const fronts = useSelector((state) => state.cards.imagesGroups);
 
   const selectedBack = useSelector((state) => state.settings.selectedBack);
+  const selectedFront = useSelector((state) => state.settings.selectedFront);
   const cardCount = useSelector((state) => state.settings.cardCount);
   const amountButtons = useSelector((state) => state.settings.amountButtons);
   const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
@@ -26,11 +30,12 @@ const SettingsPage = () => {
       alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
     } else if (cardCount === '' && cardCountFromBtn === false){
       dispatch(shuffleCards());
+      navigate('/game-field'); 
     } else {
       dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
       dispatch(shuffleCards());
+      navigate('/game-field'); 
     }
-    console.log(fronts);
   }
 
   const handleBackSideCardClick = (e) => {
@@ -41,6 +46,7 @@ const SettingsPage = () => {
 
   const handleFrontSideCardClick = (images) => {
     console.log(images);
+    dispatch(setSelectedFront(images))
     dispatch(setFrontSideCard(images))
     // const chosenFront = e.target.getAttribute('src');
     // dispatch(setSelectedBack(chosenFront))
@@ -70,16 +76,16 @@ const SettingsPage = () => {
       <div className={s.back_side__section}>
         <p>Выберите группу</p>
         <div className={s.back_side_card_wrapper}>
-          {fronts.map(back => (
-            <div key={back} className={`${s.back_side_card}`} onClick={() => handleFrontSideCardClick(back)}>
-              {back.map(aboba => (
+          {fronts.map((front, index) => (
+            <div key={index} className={`${s.back_side_card}`} onClick={() => handleFrontSideCardClick(front)}>
+              {front.map(aboba => (
                 <img
                 key={aboba}
-                  src={back[0]}
+                  src={aboba}
                   
                 />
               ))}
-              <div className={`${selectedBack === back ? s.back_side_card_selected : ''}`}></div>
+              <div className={`${selectedFront === front ? s.back_side_card_selected : ''}`}></div>
             </div>
           ))}
         </div>
