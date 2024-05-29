@@ -7,6 +7,7 @@ const initialState = {
   selectedFront: null,
   selectedShuffleAll: null,
   selectedOnlyNumbers: null,
+  isSelectedGameWitchComputer: false,
   cardCount: '',
   amountButtons: [
     {
@@ -64,6 +65,9 @@ const cardsSlice = createSlice({
       state.selectedShuffleAll = null
       state.selectedFront = null
     },
+    setSelectedGameWithComputer(state) {
+      state.isSelectedGameWitchComputer = state.isSelectedGameWitchComputer === false ? true : false
+    },
     setCardCount(state, action) {
       state.cardCount = action.payload
       state.amountButtons = state.amountButtons.map((button) => {
@@ -93,6 +97,6 @@ const cardsSlice = createSlice({
 
 
 export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront, setSelectedBackground,
-  setSelectedShuffleAll, setSelectedOnlyNumbers
+  setSelectedShuffleAll, setSelectedOnlyNumbers, setSelectedGameWithComputer
  } = cardsSlice.actions;
 export default cardsSlice.reducer;

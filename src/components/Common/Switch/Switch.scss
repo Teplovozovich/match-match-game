@@ -1,7 +1,14 @@
+.textSwitch{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .switch-label {
     display: flex;
-    width: 33px; /* ширина переключателя */
-    height: 14px; /* высота переключателя */
+    width: 45px; /* ширина переключателя */
+    height: 15px; /* высота переключателя */
     border-radius: 12px; /* радиус скругления */
     background: #DCDCDF; /* цвет фона */
     cursor: pointer;
@@ -39,12 +46,17 @@
     color: #666;
 }
 
+#switch:active {
+    background: #b9f9e9; 
+
+}
+
 #switch:checked + .switch-label {
     background: #60C2AA;
 }
 
 #switch:checked + .switch-label::before {
-    left: 15px;
+    left: 25px;
     background: #3BA189;
 }
 
@@ -55,7 +67,28 @@
     left: 10px;
 }
 
-.switch_container{
+.switch_container {
     display: flex;
-    
+    align-items: end;
+    gap: 15px;
+}
+
+@media (min-width: 1140px) and (max-width: 2000px) {
+    .switch-label {
+        width: 50px; /* ширина переключателя */
+        height: 20px; /* высота переключателя */
+    }
+
+    .switch_container {
+        align-items: baseline;
+    }
+
+    .switch-label::before {
+        height: 25px; /* высота кнопки */
+        width: 25px; /* ширина кнопки */
+    }
+
+    #switch:checked + .switch-label::before {
+        left: 30px;
+    }
 }

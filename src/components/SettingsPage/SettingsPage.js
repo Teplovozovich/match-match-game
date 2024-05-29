@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard, setSelectedBackgroundSideCard } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
-import { setCardCount, setCardCountFromBtn, setSelectedBack, setSelectedBackground, setSelectedFront, setSelectedOnlyNumbers, setSelectedShuffleAll } from '../../redux/reducers/settingsSlice';
+import {
+  setCardCount, setCardCountFromBtn, setSelectedBack,
+  setSelectedBackground, setSelectedFront, setSelectedOnlyNumbers,
+  setSelectedShuffleAll, setSelectedGameWithComputer
+} from '../../redux/reducers/settingsSlice';
 import Switch from '../Common/Switch/Switch';
 
 const SettingsPage = () => {
@@ -19,6 +23,7 @@ const SettingsPage = () => {
   const selectedFront = useSelector((state) => state.settings.selectedFront);
   const selectedShuffleAll = useSelector((state) => state.settings.selectedShuffleAll);
   const selectedOnlyNumbers = useSelector((state) => state.settings.selectedOnlyNumbers);
+  const isSelectedGameWithComputer = useSelector((state) => state.settings.isSelectedGameWitchComputer);
   const cardCount = useSelector((state) => state.settings.cardCount);
   const amountButtons = useSelector((state) => state.settings.amountButtons);
   const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
@@ -66,9 +71,8 @@ const SettingsPage = () => {
   }
 
   const handleSwitchChange = (event) => {
-    console.log("aboba");
-    // setIsFreeOnly(event.target.checked);
-  }
+    // Пустая функция для обработчика onChange
+  };
 
   return (
     <div className={s.settings}>
@@ -108,16 +112,22 @@ const SettingsPage = () => {
             dispatch(setSelectedShuffleAll("img"))
             dispatch(setFrontSideCard(fronts.flat()))
 
-          }} type="radio" id="contactChoice1" name="contact" value="img"
-            checked={selectedShuffleAll === "img"} />
+          }}
+            type="radio" id="contactChoice1" name="contact" value="img"
+            checked={selectedShuffleAll === "img"}
+            onChange={handleSwitchChange}
+          />
           <label htmlFor="contactChoice1">Перемешать все картинки </label>
         </div>
         <div className={s.radio}>
           <input onClick={() => {
             dispatch(setSelectedOnlyNumbers("num"))
             dispatch(setFrontSideCard([]))
-          }} type="radio" id="contactChoice2" name="contact" value="num"
-            checked={selectedOnlyNumbers === "num"} />
+          }}
+            type="radio" id="contactChoice2" name="contact" value="num"
+            checked={selectedOnlyNumbers === "num"}
+            onChange={handleSwitchChange}
+          />
           <label htmlFor="contactChoice2">Только числа</label>
         </div>
       </div>
@@ -130,15 +140,12 @@ const SettingsPage = () => {
           ))}
         </div>
         <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='Или введите свое значение' />
-        <div className={s.textSwitch}>
-          <p>Играть с компьютером</p>
-          <label className={s.switch_btn}>
-            <div className='switch_container'>
-              <input type="checkbox" id="switch"></input>
-              <label htmlFor="switch" className="switch-label"></label>
-            </div>
-          </label>
-        </div>
+        <Switch
+          text="Играть с компьютером"
+          onClick={() => dispatch(setSelectedGameWithComputer())}
+          id="gameWithComputerSwitch"
+          checked={isSelectedGameWithComputer}
+        />
         <button className={`${s.amount_button} ${s.button_accept}`} onClick={handleButtinClick}>Выбрать и перемешать</button>
       </div>
       <div className={s.back_side__section}>

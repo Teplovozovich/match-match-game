@@ -172,14 +172,6 @@
   border: 1px solid $btn-active-color;
 }
 
-.textSwitch{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
 @media (max-width: 540px ) {
   .back_side_card {
     width: $card-mobile-size;

@@ -1,14 +1,19 @@
 import React from 'react';
-import './Switch.scss'
+import './Switch.scss';
 
-const Switch = ({text, onChange, id}) => {
+const Switch = ({ text, onClick, id, checked }) => {
     return (
-        <div className='switch_container'>
-            <p>{text}</p>
-            <input onChange={onChange} type="checkbox" id={id}></input>
+        <div className='switch_container' onClick={onClick}>
+            <p className='textSwitch'>{text}</p>
+            <input
+                type="checkbox"
+                id="switch"
+                checked={checked}
+                onChange={() => {}} // Correctly handling onChange
+            />
             <label htmlFor={id} className="switch-label"></label>
         </div>
     );
-}
+};
 
 export default Switch;
