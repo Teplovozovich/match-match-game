@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/match-match-game/static/css/main.b006122e.css",
-    "main.js": "/match-match-game/static/js/main.d3adc3b8.js",
+    "main.css": "/match-match-game/static/css/main.5c165886.css",
+    "main.js": "/match-match-game/static/js/main.9d3af7db.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
     "static/media/kosmo.jpg": "/match-match-game/static/media/kosmo.ec7ed1aaf0e171c075d0.jpg",
     "static/media/jpg": "/match-match-game/static/media/c6630c3f848293d1fd5001ea267b36af.4a0a55a18ca4d1592989.jpg",
@@ -11,6 +11,7 @@
     "static/media/back.jpg": "/match-match-game/static/media/back.073055821b6ab5bea26c.jpg",
     "static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m.jpg": "/match-match-game/static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m.16a816166e5a1068564f.jpg",
     "static/media/safaf-image.jpg": "/match-match-game/static/media/safaf-image.6cf714cf73047824431b.jpg",
+    "static/media/1639667713_20-catherineasquithgallery-com-p-fon-rozovo-fioletovii-25.jpg": "/match-match-game/static/media/1639667713_20-catherineasquithgallery-com-p-fon-rozovo-fioletovii-25.af2bd8b27e9913b1d76a.jpg",
     "static/media/1623844728_11-phonoteka_org-p-yaponskii-pattern-krasivo-11.jpg": "/match-match-game/static/media/1623844728_11-phonoteka_org-p-yaponskii-pattern-krasivo-11.e142fecd257b765a2dae.jpg",
     "static/media/59u36eueyn17zerop9xeln7sxiupj84h.jpg": "/match-match-game/static/media/59u36eueyn17zerop9xeln7sxiupj84h.7951060bd3d175eb75c4.jpg",
     "static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.jpg": "/match-match-game/static/media/253258_amerikanskaya-tkan-thibaut-kollektsiya-heritage-artikul-f910843.3591b7d25f62f80f8bec.jpg",
@@ -19,6 +20,7 @@
     "static/media/223.jpg": "/match-match-game/static/media/223.cd58f99f6fe79d756f0b.jpg",
     "static/media/bobr-kurwa.jpg": "/match-match-game/static/media/bobr-kurwa.a699fdb7ab458e48cadc.jpg",
     "static/media/700-nw.jpg": "/match-match-game/static/media/700-nw.5c0ab2431489813680d4.jpg",
+    "static/media/1639782969_275-catherineasquithgallery-com-p-rozovo-fioletovii-abstraktnii-fon-348.jpg": "/match-match-game/static/media/1639782969_275-catherineasquithgallery-com-p-rozovo-fioletovii-abstraktnii-fon-348.5fe58000df0cb66483d7.jpg",
     "static/media/ (1).jpg": "/match-match-game/static/media/c9e0b6989cf0cdfa5be613fa9ae02539 (1).6137e2171a0b11f44832.jpg",
     "static/media/ponchiki-glazuryu.jpg": "/match-match-game/static/media/ponchiki-glazuryu.148fa05b4af7e5c0d88d.jpg",
     "static/media/6666.jpg": "/match-match-game/static/media/6666.fe479b530b7ad19c0189.jpg",
@@ -36,12 +38,12 @@
     "static/media/settings.svg": "/match-match-game/static/media/settings.b3b0482eb6667fbad267.svg",
     "index.html": "/match-match-game/index.html",
     "static/media/checkmark.svg": "/match-match-game/static/media/checkmark.d916961e04b5f466942b.svg",
-    "main.b006122e.css.map": "/match-match-game/static/css/main.b006122e.css.map",
-    "main.d3adc3b8.js.map": "/match-match-game/static/js/main.d3adc3b8.js.map",
+    "main.5c165886.css.map": "/match-match-game/static/css/main.5c165886.css.map",
+    "main.9d3af7db.js.map": "/match-match-game/static/js/main.9d3af7db.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b006122e.css",
-    "static/js/main.d3adc3b8.js"
+    "static/css/main.5c165886.css",
+    "static/js/main.9d3af7db.js"
   ]
 }
