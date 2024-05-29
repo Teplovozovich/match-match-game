@@ -122,7 +122,7 @@ const cardsSlice = createSlice({
         chosenFrontCardSide = state.imagesGroups[Math.floor(Math.random() * state.imagesGroups.length)]
       }
       
-      if (state.chosenFrontCardSide === null) {
+      if (state.chosenBackground === null) {
         state.chosenBackground = state.backgrounds[Math.floor(Math.random() * state.backgrounds.length)]
       }
 

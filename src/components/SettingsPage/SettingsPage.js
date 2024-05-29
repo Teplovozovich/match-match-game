@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard, setSelectedBackgroundSideCard } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
-import { setCardCount, setCardCountFromBtn, setSelectedBack, setSelectedBackground, setSelectedFront } from '../../redux/reducers/settingsSlice';
+import { setCardCount, setCardCountFromBtn, setSelectedBack, setSelectedBackground, setSelectedFront, setSelectedOnlyNumbers, setSelectedShuffleAll } from '../../redux/reducers/settingsSlice';
 import Switch from '../Common/Switch/Switch';
 
 const SettingsPage = () => {
@@ -18,6 +18,8 @@ const SettingsPage = () => {
   const selectedBack = useSelector((state) => state.settings.selectedBack);
   const selectedBackground = useSelector((state) => state.settings.selectedBackground);
   const selectedFront = useSelector((state) => state.settings.selectedFront);
+  const selectedShuffleAll = useSelector((state) => state.settings.selectedShuffleAll);
+  const selectedOnlyNumbers = useSelector((state) => state.settings.selectedOnlyNumbers);
   const cardCount = useSelector((state) => state.settings.cardCount);
   const amountButtons = useSelector((state) => state.settings.amountButtons);
   const cardCountFromBtn = useSelector((state) => state.settings.cardCountFromBtn);
@@ -103,11 +105,13 @@ const SettingsPage = () => {
       </div>
       <div className={s.radio_block}>
         <div className={s.radio}>
-          <input type="radio" id="contactChoice1" name="contact" value="img" onClick={() => {console.log("aboba");}}/>
+          <input onClick={() => {dispatch(setSelectedShuffleAll("img"))}} type="radio" id="contactChoice1" name="contact" value="img"
+            checked={selectedShuffleAll === "img"} />
           <label htmlFor="contactChoice1">Перемешать все картинки </label>
         </div>
         <div className={s.radio}>
-          <input type="radio" id="contactChoice2" name="contact" value="num" onClick={() => {console.log("aboba");}}/>
+          <input onClick={() => {dispatch(setSelectedOnlyNumbers("num"))}} type="radio" id="contactChoice2" name="contact" value="num"
+            checked={selectedOnlyNumbers === "num"} />
           <label htmlFor="contactChoice2">Только числа</label>
         </div>
       </div>

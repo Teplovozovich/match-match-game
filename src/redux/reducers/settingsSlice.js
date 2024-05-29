@@ -51,12 +51,18 @@ const cardsSlice = createSlice({
     },
     setSelectedFront(state, action) {
       state.selectedFront = action.payload
+      state.selectedOnlyNumbers = null
+      state.selectedShuffleAll = null
     },
     setSelectedShuffleAll(state, action) {
       state.selectedShuffleAll = action.payload
+      state.selectedOnlyNumbers = null
+      state.selectedFront = null
     },
     setSelectedOnlyNumbers(state, action) {
       state.selectedOnlyNumbers = action.payload
+      state.selectedShuffleAll = null
+      state.selectedFront = null
     },
     setCardCount(state, action) {
       state.cardCount = action.payload
@@ -87,6 +93,6 @@ const cardsSlice = createSlice({
 
 
 export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront, setSelectedBackground,
-  selectedShuffleAll, setSelectedOnlyNumbers
+  setSelectedShuffleAll, setSelectedOnlyNumbers
  } = cardsSlice.actions;
 export default cardsSlice.reducer;
