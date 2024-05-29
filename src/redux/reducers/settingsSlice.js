@@ -5,6 +5,8 @@ const initialState = {
   selectedBack: null,
   selectedBackground: null,
   selectedFront: null,
+  selectedShuffleAll: null,
+  selectedOnlyNumbers: null,
   cardCount: '',
   amountButtons: [
     {
@@ -50,6 +52,12 @@ const cardsSlice = createSlice({
     setSelectedFront(state, action) {
       state.selectedFront = action.payload
     },
+    setSelectedShuffleAll(state, action) {
+      state.selectedShuffleAll = action.payload
+    },
+    setSelectedOnlyNumbers(state, action) {
+      state.selectedOnlyNumbers = action.payload
+    },
     setCardCount(state, action) {
       state.cardCount = action.payload
       state.amountButtons = state.amountButtons.map((button) => {
@@ -78,5 +86,7 @@ const cardsSlice = createSlice({
 
 
 
-export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront, setSelectedBackground } = cardsSlice.actions;
+export const { setSelectedBack, setCardCount, setCardCountFromBtn, setSelectedFront, setSelectedBackground,
+  selectedShuffleAll, setSelectedOnlyNumbers
+ } = cardsSlice.actions;
 export default cardsSlice.reducer;

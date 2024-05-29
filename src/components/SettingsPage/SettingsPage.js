@@ -58,9 +58,6 @@ const SettingsPage = () => {
     console.log(images);
     dispatch(setSelectedFront(images))
     dispatch(setFrontSideCard(images))
-    // const chosenFront = e.target.getAttribute('src');
-    // dispatch(setSelectedBack(chosenFront))
-    // dispatch(setBackSideCard(chosenFront));
   }
 
   const handleAmountButtonClick = (e) => {
@@ -90,14 +87,13 @@ const SettingsPage = () => {
       </div>
       <div className={s.back_side__section}>
         <p>Выберите группу</p>
-        <div className={s.back_side_card_wrapper}>
+        <div className={s.front_side_card_wrapper}>
           {fronts.map((front, index) => (
             <div key={index} className={`${s.back_side_card}`} onClick={() => handleFrontSideCardClick(front)}>
               {front.map(aboba => (
                 <img
                   key={aboba}
                   src={aboba}
-
                 />
               ))}
               <div className={`${selectedFront === front ? s.back_side_card_selected : ''}`}></div>
@@ -105,7 +101,16 @@ const SettingsPage = () => {
           ))}
         </div>
       </div>
-
+      <div className={s.radio_block}>
+        <div className={s.radio}>
+          <input type="radio" id="contactChoice1" name="contact" value="img" onClick={() => {console.log("aboba");}}/>
+          <label htmlFor="contactChoice1">Перемешать все картинки </label>
+        </div>
+        <div className={s.radio}>
+          <input type="radio" id="contactChoice2" name="contact" value="num" onClick={() => {console.log("aboba");}}/>
+          <label htmlFor="contactChoice2">Только числа</label>
+        </div>
+      </div>
       <div className={s.amount_card__section}>
         <p>Выберете количество пар</p>
         <div className={s.amount_buttons_block}>
@@ -114,12 +119,15 @@ const SettingsPage = () => {
               onClick={handleAmountButtonClick}>{button.amount}</button>
           ))}
         </div>
-        <p>Или введите свое значение</p>
-        <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='40' />
-        <div>
-          <Switch />
-          <Switch />
-          <Switch />
+        <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='Или введите свое значение' />
+        <div className={s.textSwitch}>
+          <p>Играть с компьютером</p>
+          <label className={s.switch_btn}>
+            <div className='switch_container'>
+              <input type="checkbox" id="switch"></input>
+              <label htmlFor="switch" className="switch-label"></label>
+            </div>
+          </label>
         </div>
         <button className={`${s.amount_button} ${s.button_accept}`} onClick={handleButtinClick}>Выбрать и перемешать</button>
       </div>
@@ -136,15 +144,6 @@ const SettingsPage = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className={s.textSwitch}>
-        <p>Только свободные</p>
-        <label className={s.switch_btn}>
-          <div className='switch_container'>
-            <input type="checkbox" id="switch"></input>
-            <label htmlFor="switch" className="switch-label"></label>
-          </div>
-        </label>
       </div>
     </div>
   )

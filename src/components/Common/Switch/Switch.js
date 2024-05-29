@@ -1,11 +1,12 @@
 import React from 'react';
 import './Switch.scss'
 
-const Switch = (props) => {
+const Switch = ({text, onChange, id}) => {
     return (
         <div className='switch_container'>
-            <input onChange={props.onChange} type="checkbox" id="switch"></input>
-            <label htmlFor="switch" className="switch-label"></label>
+            <p>{text}</p>
+            <input onChange={onChange} type="checkbox" id={id}></input>
+            <label htmlFor={id} className="switch-label"></label>
         </div>
     );
 }
