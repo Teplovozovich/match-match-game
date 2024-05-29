@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/match-match-game/static/css/main.5c165886.css",
-    "main.js": "/match-match-game/static/js/main.9d3af7db.js",
+    "main.js": "/match-match-game/static/js/main.4f89c7fa.js",
     "static/js/453.9dadf93b.chunk.js": "/match-match-game/static/js/453.9dadf93b.chunk.js",
     "static/media/kosmo.jpg": "/match-match-game/static/media/kosmo.ec7ed1aaf0e171c075d0.jpg",
     "static/media/jpg": "/match-match-game/static/media/c6630c3f848293d1fd5001ea267b36af.4a0a55a18ca4d1592989.jpg",
@@ -39,11 +39,11 @@
     "index.html": "/match-match-game/index.html",
     "static/media/checkmark.svg": "/match-match-game/static/media/checkmark.d916961e04b5f466942b.svg",
     "main.5c165886.css.map": "/match-match-game/static/css/main.5c165886.css.map",
-    "main.9d3af7db.js.map": "/match-match-game/static/js/main.9d3af7db.js.map",
+    "main.4f89c7fa.js.map": "/match-match-game/static/js/main.4f89c7fa.js.map",
     "453.9dadf93b.chunk.js.map": "/match-match-game/static/js/453.9dadf93b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5c165886.css",
-    "static/js/main.9d3af7db.js"
+    "static/js/main.4f89c7fa.js"
   ]
 }
