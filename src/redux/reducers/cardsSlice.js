@@ -106,7 +106,6 @@ const cardsSlice = createSlice({
       state.chosenBackground = action.payload;
     },
     setFrontSideCard(state, action) {
-      console.log(action.payload);
       state.chosenFrontCardSide = action.payload;
     },
     shuffleCards: (state) => {

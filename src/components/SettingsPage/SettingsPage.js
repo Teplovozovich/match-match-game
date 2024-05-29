@@ -13,7 +13,6 @@ const SettingsPage = () => {
   const backs = useSelector((state) => state.cards.backsCardSide);
   const backgrounds = useSelector((state) => state.cards.backgrounds);
   const fronts = useSelector((state) => state.cards.imagesGroups);
-  console.log(backgrounds);
 
   const selectedBack = useSelector((state) => state.settings.selectedBack);
   const selectedBackground = useSelector((state) => state.settings.selectedBackground);
@@ -105,12 +104,19 @@ const SettingsPage = () => {
       </div>
       <div className={s.radio_block}>
         <div className={s.radio}>
-          <input onClick={() => {dispatch(setSelectedShuffleAll("img"))}} type="radio" id="contactChoice1" name="contact" value="img"
+          <input onClick={() => {
+            dispatch(setSelectedShuffleAll("img"))
+            dispatch(setFrontSideCard(fronts.flat()))
+
+          }} type="radio" id="contactChoice1" name="contact" value="img"
             checked={selectedShuffleAll === "img"} />
           <label htmlFor="contactChoice1">Перемешать все картинки </label>
         </div>
         <div className={s.radio}>
-          <input onClick={() => {dispatch(setSelectedOnlyNumbers("num"))}} type="radio" id="contactChoice2" name="contact" value="num"
+          <input onClick={() => {
+            dispatch(setSelectedOnlyNumbers("num"))
+            dispatch(setFrontSideCard([]))
+          }} type="radio" id="contactChoice2" name="contact" value="num"
             checked={selectedOnlyNumbers === "num"} />
           <label htmlFor="contactChoice2">Только числа</label>
         </div>
