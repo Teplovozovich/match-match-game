@@ -17,7 +17,6 @@ const GameField = () => {
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
 
   useEffect(() => {
-    console.log(background);
     if (isRotationDelay) {
       setTimeout(() => {
         dispatch(enableFlipCard());

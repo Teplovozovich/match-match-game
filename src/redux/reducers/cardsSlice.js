@@ -59,21 +59,20 @@ const cardsSlice = createSlice({
         });
         state.isRotationDelay = true;
       }
-      console.log(state.cards[0].cardBack);
+      state.sumMyMotions += 1
+
+
       if (state.chosenBackCardSide !== null) {
 
       } else {
         state.chosenBackCardSide = state.cards[0].cardBack
       }
-
-      state.sumMyMotions += 1
     },
     enableFlipCard(state, action) {
       state.cards.forEach((card) => {
         if (card.isMatched === true) {
 
         } else {
-
           card.canFlip = true;
           card.isFlipped = false;
         }
