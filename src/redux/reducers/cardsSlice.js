@@ -8,6 +8,7 @@ const initialState = {
   computerMemory: [],
   flippedCards: [],
   isGameWithComputer: false,
+  isComputerFirstMotion: false,
   cards: [{
     id: null,
     cardFont: null,
