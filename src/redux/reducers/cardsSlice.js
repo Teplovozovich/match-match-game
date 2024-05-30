@@ -7,7 +7,7 @@ import {
 const initialState = {
   computerMemory: [],
   flippedCards: [],
-  isGameWithComputer: false,
+  isGameWithComputer: true,
   isComputerFirstMotion: false,
   cards: [{
     id: null,
