@@ -8,7 +8,10 @@ const initialState = {
   computerMemory: [],
   flippedCards: [],
   isGameWithComputer: true,
-  isComputerFirstMotion: false,
+  isComputerMotion: false,
+  isComputerFirstMotion: true,
+  sumComputerMotions: 0,
+  sumComputerMatched: 0,
   cards: [{
     id: null,
     cardFont: null,
@@ -30,8 +33,6 @@ const initialState = {
   sumCards: 10,
   sumMyMotions: 0,
   sumMyMatched: 0,
-  sumComputerMotions: 0,
-  sumComputerMatched: 0,
 };
 
 function importAll(r) {
@@ -50,16 +51,54 @@ const cardsSlice = createSlice({
       }
     },
     flipCard(state, action) {
-      state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
-      state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
-      const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
-      if (currentCoupleFlippedCards.length === 2) {
-        state.cards.forEach((card) => {
-          card.canFlip = false;
-        });
-        state.isRotationDelay = true;
+      // debugger
+
+      console.log(action.payload);
+      if (state.isGameWithComputer) {
+        if (state.isComputerMotion) {
+          // debugger
+          state.sumComputerMotions += 1
+          state.cards[Math.floor(Math.random() * state.cards.length)].isFlipped = true
+
+          const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
+          if (currentCoupleFlippedCards.length === 2) {
+            state.cards.forEach((card) => {
+              card.canFlip = false;
+            });
+            state.isRotationDelay = true;
+            state.isComputerMotion = !state.isComputerMotion
+          }
+        } else {
+          state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
+          state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
+          const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
+
+          if (currentCoupleFlippedCards.length === 2) {
+            state.cards.forEach((card) => {
+              card.canFlip = false;
+            });
+            state.isRotationDelay = true;
+            state.isComputerMotion = !state.isComputerMotion
+          }
+          state.sumMyMotions += 1
+        }
+
+
+
+
+      } else {
+        state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
+        state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
+        const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
+
+        if (currentCoupleFlippedCards.length === 2) {
+          state.cards.forEach((card) => {
+            card.canFlip = false;
+          });
+          state.isRotationDelay = true;
+        }
+        state.sumMyMotions += 1
       }
-      state.sumMyMotions += 1
 
 
       if (state.chosenBackCardSide !== null) {
@@ -111,7 +150,8 @@ const cardsSlice = createSlice({
       state.chosenBackground = action.payload;
     },
     setGameWithComputer(state) {
-      state.isGameWithComputer = state.isGameWithComputer === false ? true : false;
+      console.log("aboba");
+      state.isGameWithComputer = !state.isGameWithComputer;
     },
     setFrontSideCard(state, action) {
       state.chosenFrontCardSide = action.payload;

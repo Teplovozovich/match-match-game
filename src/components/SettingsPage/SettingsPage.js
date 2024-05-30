@@ -39,9 +39,11 @@ const SettingsPage = () => {
     if (cardCount > 4999 || cardCount < 2 && cardCountFromBtn === 0) {
       alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
     } else if (cardCount === '' && cardCountFromBtn === false) {
+      dispatch(setGameWithComputer())
       dispatch(shuffleCards());
       navigate('/game-field');
     } else {
+      dispatch(setGameWithComputer())
       dispatch(setSumCards(cardCount === '' ? cardCountFromBtn : cardCount));
       dispatch(shuffleCards());
       navigate('/game-field');
@@ -144,7 +146,6 @@ const SettingsPage = () => {
           text="Играть с компьютером"
           onClick={() => {
             dispatch(setSelectedGameWithComputer())
-            dispatch(setGameWithComputer())
           }}
           id="gameWithComputerSwitch"
           checked={isSelectedGameWithComputer}
