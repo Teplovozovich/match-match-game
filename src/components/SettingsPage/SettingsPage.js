@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import s from './SettingsPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard, setSelectedBackgroundSideCard } from '../../redux/reducers/cardsSlice';
+import { setBackSideCard, setSumCards, shuffleCards, setFrontSideCard, setSelectedBackgroundSideCard, setGameWithComputer } from '../../redux/reducers/cardsSlice';
 import "./Settings.css"
 import {
   setCardCount, setCardCountFromBtn, setSelectedBack,
@@ -142,7 +142,10 @@ const SettingsPage = () => {
         <input className={s.input} type="number" value={cardCount} onChange={handleInputChange} placeholder='Или введите свое значение' />
         <Switch
           text="Играть с компьютером"
-          onClick={() => dispatch(setSelectedGameWithComputer())}
+          onClick={() => {
+            dispatch(setSelectedGameWithComputer())
+            dispatch(setGameWithComputer())
+          }}
           id="gameWithComputerSwitch"
           checked={isSelectedGameWithComputer}
         />

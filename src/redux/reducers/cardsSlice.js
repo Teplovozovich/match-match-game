@@ -5,6 +5,9 @@ import {
 } from './images.js';
 
 const initialState = {
+  computerMemory: [],
+  flippedCards: [],
+  isGameWithComputer: false,
   cards: [{
     id: null,
     cardFont: null,
@@ -24,8 +27,10 @@ const initialState = {
   isRotationDelay: false,
   isGameGoingOn: false,
   sumCards: 10,
-  sumMotions: 0,
-  sumMatched: 0,
+  sumMyMotions: 0,
+  sumMyMatched: 0,
+  sumComputerMotions: 0,
+  sumComputerMatched: 0,
 };
 
 function importAll(r) {
@@ -60,7 +65,7 @@ const cardsSlice = createSlice({
         state.chosenBackCardSide = state.cards[0].cardBack
       }
 
-      state.sumMotions += 1
+      state.sumMyMotions += 1
     },
     enableFlipCard(state, action) {
       state.cards.forEach((card) => {
@@ -83,7 +88,7 @@ const cardsSlice = createSlice({
           firstCard.isMatched = true;
           secondCard.isMatched = true;
           console.log("aboba");
-          state.sumMatched += 1;
+          state.sumMyMatched += 1;
         } else {
 
         }
@@ -105,12 +110,15 @@ const cardsSlice = createSlice({
     setSelectedBackgroundSideCard(state, action) {
       state.chosenBackground = action.payload;
     },
+    setGameWithComputer(state) {
+      state.isGameWithComputer = state.isGameWithComputer === false ? true : false;
+    },
     setFrontSideCard(state, action) {
       state.chosenFrontCardSide = action.payload;
     },
     shuffleCards: (state) => {
-      state.sumMatched = 0;
-      state.sumMotions = 0;
+      state.sumMyMatched = 0;
+      state.sumMyMotions = 0;
       state.isGameGoingOn = true;
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
@@ -120,7 +128,7 @@ const cardsSlice = createSlice({
       if (state.chosenFrontCardSide === null) {
         chosenFrontCardSide = state.imagesGroups[Math.floor(Math.random() * state.imagesGroups.length)]
       }
-      
+
       if (state.chosenBackground === null) {
         state.chosenBackground = state.backgrounds[Math.floor(Math.random() * state.backgrounds.length)]
       }
@@ -167,5 +175,6 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
 };
 
 export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards,
-  setBackSideCard, setSumCards, setFrontSideCard, setSelectedBackgroundSideCard} = cardsSlice.actions;
+  setBackSideCard, setSumCards, setFrontSideCard, setSelectedBackgroundSideCard,
+  setGameWithComputer } = cardsSlice.actions;
 export default cardsSlice.reducer;

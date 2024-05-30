@@ -9,7 +9,7 @@ const Switch = ({ text, onClick, id, checked }) => {
                 type="checkbox"
                 id="switch"
                 checked={checked}
-                onChange={() => {}} // Correctly handling onChange
+                onChange={() => {}} // Pass the onChange prop
             />
             <label htmlFor={id} className="switch-label"></label>
         </div>
