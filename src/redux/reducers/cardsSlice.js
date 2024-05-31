@@ -57,7 +57,6 @@ const cardsSlice = createSlice({
       if (state.isGameWithComputer) {
         if (state.isComputerMotion) {
           // debugger
-          state.sumComputerMotions += 1
           state.cards[Math.floor(Math.random() * state.cards.length)].isFlipped = true
 
           const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
@@ -66,8 +65,11 @@ const cardsSlice = createSlice({
               card.canFlip = false;
             });
             state.isRotationDelay = true;
-            state.isComputerMotion = !state.isComputerMotion
+            debugger
+
+            // state.isComputerMotion = !state.isComputerMotion
           }
+          state.sumComputerMotions += 1
         } else {
           state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
           state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
@@ -77,8 +79,9 @@ const cardsSlice = createSlice({
             state.cards.forEach((card) => {
               card.canFlip = false;
             });
+            console.log(state.cards);
             state.isRotationDelay = true;
-            state.isComputerMotion = !state.isComputerMotion
+            // state.isComputerMotion = !state.isComputerMotion
           }
           state.sumMyMotions += 1
         }
@@ -116,6 +119,9 @@ const cardsSlice = createSlice({
           card.isFlipped = false;
         }
       });
+      if (state.isGameWithComputer === true) {
+        state.isComputerMotion = !state.isComputerMotion
+      }
       state.isRotationDelay = false;
     },
     matchCards(state, action) {
@@ -129,12 +135,15 @@ const cardsSlice = createSlice({
           console.log("aboba");
           state.sumMyMatched += 1;
         } else {
-
+          // state.isComputerMotion = !state.isComputerMotion
         }
       }
     },
     setCards(state, action) {
       state.cards = action.payload
+    },
+    setIsComputerMotion(state) {
+      state.isComputerMotion = !state.isComputerMotion
     },
     setSumCards(state, action) {
       state.sumCards = action.payload
@@ -216,5 +225,5 @@ export const getCounterThunk = (personalAccount) => async (dispatch) => {
 
 export const { setCards, flipCard, matchCards, enableFlipCard, shuffleCards,
   setBackSideCard, setSumCards, setFrontSideCard, setSelectedBackgroundSideCard,
-  setGameWithComputer } = cardsSlice.actions;
+  setGameWithComputer, setIsComputerMotion } = cardsSlice.actions;
 export default cardsSlice.reducer;

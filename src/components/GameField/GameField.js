@@ -2,12 +2,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCards, enableFlipCard, flipCard, matchCards, shuffleCards } from './../../redux/reducers/cardsSlice';
+import { setCards, enableFlipCard, flipCard, matchCards, shuffleCards, setIsComputerMotion } from './../../redux/reducers/cardsSlice';
 import s from './GameField.module.scss';
 import Card from './Card/Card';
 
 const GameField = () => {
   const dispatch = useDispatch();
+  const state = useSelector(state => state.cards);
   const cards = useSelector(state => state.cards.cards);
   const background = useSelector(state => state.cards.chosenBackground);
   const sumMyMotions = useSelector(state => state.cards.sumMyMotions);
@@ -17,9 +18,15 @@ const GameField = () => {
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
   const isComputerMotion = useSelector(state => state.cards.isComputerMotion);
   const isGameWithComputer = useSelector(state => state.cards.isGameWithComputer);
-
+  
+  const prevIsComputerMotion = useRef(isComputerMotion); // Инициализируем useRef
+  const prevIsGameWithComputer = useRef(isGameWithComputer); // Инициализируем useRef
+  const prevSumComputerMotions = useRef(sumComputerMotions); // Инициализируем useRef
+  
   useEffect(() => {
-    if (isRotationDelay) {
+    if (isRotationDelay & isComputerMotion === false) {
+      // dispatch(setIsComputerMotion())
+      // debugger
       setTimeout(() => {
         dispatch(enableFlipCard());
       }, 800);
@@ -27,25 +34,29 @@ const GameField = () => {
     }
   }, [isRotationDelay]);
 
-  const prevIsComputerMotion = useRef(isComputerMotion); // Инициализируем useRef
-  const prevIsGameWithComputer = useRef(isGameWithComputer); // Инициализируем useRef
-  const prevSumComputerMotions = useRef(sumComputerMotions); // Инициализируем useRef
   const [aboba, setAboba] = useState(0);
 
   useEffect(() => {
     if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
       if (isComputerMotion === true) {
-        if (isRotationDelay) {
-          setTimeout(() => {
-            dispatch(enableFlipCard());
-            // debugger
-          }, 1000);
-          dispatch(matchCards());
-        }
-        setTimeout(() => {
-          dispatch(flipCard())
-        }, 800);
         // debugger
+        dispatch(flipCard())
+
+        if (prevSumComputerMotions.current !== sumComputerMotions) {
+          debugger
+          console.log(state);
+          
+          
+          // dispatch(setIsComputerMotion())
+          if (isRotationDelay) {
+            debugger
+            setTimeout(() => {
+              dispatch(enableFlipCard());
+              console.log("enable");
+            }, 800);
+            dispatch(matchCards());
+            
+          }}
         console.log("gamefield");
       }
     }
