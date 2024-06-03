@@ -3,11 +3,13 @@ import s from './Card.module.scss';
 import { flipCard, matchCards } from './../../../redux//reducers/cardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Card = ({ id, groupId, frontImage, backImage, canFlip, isFlipped, isMatched, background }) => {
+const Card = ({ id, groupId, frontImage, backImage, canFlip, isFlipped, isMatched, background, isComputerMotion }) => {
   const dispatch = useDispatch()
 
   const handleFlipCard = () => {
-    dispatch(flipCard(id))
+    if (!isComputerMotion) { 
+      dispatch(flipCard(id))
+    }
   };
 
   return (

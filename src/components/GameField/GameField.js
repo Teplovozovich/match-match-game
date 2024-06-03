@@ -18,15 +18,13 @@ const GameField = () => {
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
   const isComputerMotion = useSelector(state => state.cards.isComputerMotion);
   const isGameWithComputer = useSelector(state => state.cards.isGameWithComputer);
-  
+
   const prevIsComputerMotion = useRef(isComputerMotion); // Инициализируем useRef
   const prevIsGameWithComputer = useRef(isGameWithComputer); // Инициализируем useRef
   const prevSumComputerMotions = useRef(sumComputerMotions); // Инициализируем useRef
-  
+
   useEffect(() => {
     if (isRotationDelay & isComputerMotion === false) {
-      // dispatch(setIsComputerMotion())
-      // debugger
       setTimeout(() => {
         dispatch(enableFlipCard());
       }, 800);
@@ -39,24 +37,25 @@ const GameField = () => {
   useEffect(() => {
     if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
       if (isComputerMotion === true) {
-        // debugger
-        dispatch(flipCard())
-
+        if (isRotationDelay == false) {
+          setTimeout(() => {
+            dispatch(flipCard())
+            console.log("enable");
+          }, 800);
+        }
         if (prevSumComputerMotions.current !== sumComputerMotions) {
-          debugger
+          // debugger
           console.log(state);
-          
-          
-          // dispatch(setIsComputerMotion())
           if (isRotationDelay) {
-            debugger
+            // debugger
             setTimeout(() => {
               dispatch(enableFlipCard());
               console.log("enable");
             }, 800);
             dispatch(matchCards());
-            
-          }}
+
+          }
+        }
         console.log("gamefield");
       }
     }
@@ -74,10 +73,13 @@ const GameField = () => {
           <p>Совпало: {sumMyMatched}</p>
           <button onClick={() => setAboba(aboba + 1)}>CLIIIICK</button>
         </div>
-        <div className={s.upper_game_field_right_block}>
-          <p>Ходов: {sumComputerMotions}</p>
-          <p>Совпало: {sumComputerMatched}</p>
-        </div>
+        {isGameWithComputer &&
+          <div className={s.upper_game_field_right_block}>
+            <p>Ходов: {sumComputerMotions}</p>
+            <p>Совпало: {sumComputerMatched}</p>
+          </div>
+        }
+
       </div>
       <div className={s.game_field}>
         {cards.map(card => (
@@ -91,6 +93,7 @@ const GameField = () => {
             canFlip={card.canFlip}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}
+            isComputerMotion={isComputerMotion}
           />
         ))}
       </div>

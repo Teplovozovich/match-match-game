@@ -63,25 +63,22 @@ const cardsSlice = createSlice({
           if (currentCoupleFlippedCards.length === 2) {
             state.cards.forEach((card) => {
               card.canFlip = false;
+            console.log(state.cards);
             });
             state.isRotationDelay = true;
-            debugger
-
-            // state.isComputerMotion = !state.isComputerMotion
           }
           state.sumComputerMotions += 1
         } else {
           state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
           state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
-          const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
 
+          const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
           if (currentCoupleFlippedCards.length === 2) {
             state.cards.forEach((card) => {
               card.canFlip = false;
             });
             console.log(state.cards);
             state.isRotationDelay = true;
-            // state.isComputerMotion = !state.isComputerMotion
           }
           state.sumMyMotions += 1
         }
@@ -132,8 +129,11 @@ const cardsSlice = createSlice({
         if (firstCard.groupId === secondCard.groupId && firstCard.isMatched === false) {
           firstCard.isMatched = true;
           secondCard.isMatched = true;
-          console.log("aboba");
-          state.sumMyMatched += 1;
+          if (state.isComputerMotion) {
+            state.sumComputerMatched += 1;
+          } else {
+            state.sumMyMatched += 1;
+          }
         } else {
           // state.isComputerMotion = !state.isComputerMotion
         }
@@ -167,7 +167,9 @@ const cardsSlice = createSlice({
     },
     shuffleCards: (state) => {
       state.sumMyMatched = 0;
+      state.sumComputerMatched = 0;
       state.sumMyMotions = 0;
+      state.sumComputerMotions = 0;
       state.isGameGoingOn = true;
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
