@@ -1,5 +1,3 @@
-// В вашем файле GameField.js
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCards, enableFlipCard, flipCard, matchCards, shuffleCards, setIsComputerMotion } from './../../redux/reducers/cardsSlice';
@@ -32,38 +30,30 @@ const GameField = () => {
     }
   }, [isRotationDelay]);
 
-  const [aboba, setAboba] = useState(0);
-
   useEffect(() => {
     if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
       if (isComputerMotion === true) {
         if (isRotationDelay == false) {
           setTimeout(() => {
             dispatch(flipCard())
-            console.log("enable");
           }, 800);
         }
         if (prevSumComputerMotions.current !== sumComputerMotions) {
-          // debugger
-          console.log(state);
           if (isRotationDelay) {
-            // debugger
             setTimeout(() => {
               dispatch(enableFlipCard());
-              console.log("enable");
             }, 800);
             dispatch(matchCards());
 
           }
         }
-        console.log("gamefield");
       }
     }
     prevIsComputerMotion.current = isComputerMotion;
     prevIsGameWithComputer.current = isGameWithComputer;
     prevSumComputerMotions.current = sumComputerMotions;
 
-  }, [isComputerMotion, isGameWithComputer, sumComputerMotions, isRotationDelay, aboba]);
+  }, [isComputerMotion, isGameWithComputer, sumComputerMotions, isRotationDelay]);
 
   return (
     <div className={s.game_field__page}>
@@ -71,7 +61,6 @@ const GameField = () => {
         <div className={s.upper_game_field_left__block}>
           <p>Ходов: {sumMyMotions}</p>
           <p>Совпало: {sumMyMatched}</p>
-          <button onClick={() => setAboba(aboba + 1)}>CLIIIICK</button>
         </div>
         {isGameWithComputer &&
           <div className={s.upper_game_field_right_block}>

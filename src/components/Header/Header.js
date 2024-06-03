@@ -9,8 +9,11 @@ import { shuffleCards } from '../../redux/reducers/cardsSlice';
 const Header = () => {
   const location = useLocation(); // Use useLocation to access the current URL
   const dispatch = useDispatch();
+  const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
+  const isComputerMotion = useSelector(state => state.cards.isComputerMotion);
   const isGameGoingOn = useSelector((state) => state.cards.isGameGoingOn)
 
+  console.log(isRotationDelay);
   useEffect(() => {
     dispatch(shuffleCards())
     dispatch(shuffleCards())
@@ -26,11 +29,11 @@ const Header = () => {
 
         {location.pathname === '/game-field' ?
           <NavLink to="/game-field" className={s.button_wrapper}>
-            <button className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
+            <button disabled={isRotationDelay || isComputerMotion} className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
           </NavLink> :
 
           <NavLink to="/game-field" className={s.button_wrapper}>
-            <button className={s.button}>Вернуться</button>
+            <button disabled={isRotationDelay || isComputerMotion} className={s.button}>Вернуться</button>
           </NavLink>
         }
         <div className={s.settings}>

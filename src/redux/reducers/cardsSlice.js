@@ -5,7 +5,6 @@ import {
 } from './images.js';
 
 const initialState = {
-  computerMemory: [],
   flippedCards: [],
   isGameWithComputer: true,
   isComputerMotion: false,
@@ -43,41 +42,60 @@ const cardsSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
-    firstRender(state) {
-      if (state.chosenBackCardSide !== null) {
-
-      } else {
-        state.chosenBackCardSide = state.cards[0].cardBack
-      }
-    },
     flipCard(state, action) {
-      // debugger
-
-      console.log(action.payload);
+      const payload = action.payload - 1;
       if (state.isGameWithComputer) {
-        if (state.isComputerMotion) {
-          // debugger
-          state.cards[Math.floor(Math.random() * state.cards.length)].isFlipped = true
 
+        if (state.isComputerMotion) {
+
+          const matchedPair = state.flippedCards.find(card1 => {
+            return state.flippedCards.some(card2 => {
+              return card1.id !== card2.id && 
+                     card1.groupId === card2.groupId && 
+                     state.cards[card1.id].isMatched === false && 
+                     state.cards[card2.id].isMatched === false;
+            });
+          });
+          if (matchedPair) {
+            debugger
+            console.log(matchedPair);
+          }
+          const random = Math.floor(Math.random() * state.cards.length)
+          state.cards[random].isFlipped = true
+          if (!state.flippedCards.some(card => card.id === random)) {
+            state.flippedCards = [...state.flippedCards, { id: random, groupId: state.cards[random].groupId, isMatched: state.cards[random].isMatched}]
+          }
+
+          
           const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
           if (currentCoupleFlippedCards.length === 2) {
             state.cards.forEach((card) => {
               card.canFlip = false;
-            console.log(state.cards);
             });
             state.isRotationDelay = true;
           }
           state.sumComputerMotions += 1
+
+
+
+
+
+
+
+
         } else {
-          state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
-          state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
+          state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
+          state.cards[payload].canFlip = !state.cards[payload].canFlip;
+
+          if (!state.flippedCards.some(card => card.id === payload)) {
+            state.flippedCards = [...state.flippedCards, { id: payload, groupId: state.cards[payload].groupId, isMatched: state.cards[payload].isMatched}]
+          }
 
           const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
           if (currentCoupleFlippedCards.length === 2) {
             state.cards.forEach((card) => {
               card.canFlip = false;
             });
-            console.log(state.cards);
             state.isRotationDelay = true;
           }
           state.sumMyMotions += 1
@@ -87,8 +105,8 @@ const cardsSlice = createSlice({
 
 
       } else {
-        state.cards[action.payload - 1].isFlipped = !state.cards[action.payload - 1].isFlipped;
-        state.cards[action.payload - 1].canFlip = !state.cards[action.payload - 1].canFlip;
+        state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
+        state.cards[payload].canFlip = !state.cards[payload].canFlip;
         const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
 
         if (currentCoupleFlippedCards.length === 2) {
@@ -171,6 +189,7 @@ const cardsSlice = createSlice({
       state.sumMyMotions = 0;
       state.sumComputerMotions = 0;
       state.isGameGoingOn = true;
+      state.flippedCards = [];
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
       state.backsCardSide = imagePathsBackSideCard;
