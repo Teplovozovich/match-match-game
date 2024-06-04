@@ -32,7 +32,7 @@ const GameField = () => {
   }, [isRotationDelay]);
 
   useEffect(() => {
-    if (isGameGoingOn) {
+    if (isGameGoingOn && isGameWithComputer) {
 
       if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
         if (isComputerMotion === true) {

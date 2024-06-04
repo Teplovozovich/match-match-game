@@ -182,8 +182,10 @@ const cardsSlice = createSlice({
           }
         }
       } else {
-        state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
-        state.cards[payload].canFlip = !state.cards[payload].canFlip;
+        if (action.payload.length != 0) {
+          state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
+          state.cards[payload].canFlip = !state.cards[payload].canFlip;
+        } 
         const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
 
         if (currentCoupleFlippedCards.length === 2) {
@@ -275,14 +277,14 @@ const cardsSlice = createSlice({
       state.chosenFrontCardSide = action.payload;
     },
     shuffleCards: (state) => {
-      if (state.sumComputerMatched > state.sumMyMatched) {
+      if (state.sumComputerMatched > state.sumMyMatched && state.isGameWithComputer) {
         state.isComputerMotion = false
-      } else if (state.sumComputerMatched < state.sumMyMatched) {
+      } else if (state.sumComputerMatched < state.sumMyMatched && state.isGameWithComputer) {
         state.isComputerMotion = true
       } else {
 
       }
-      
+
       state.sumMyMatched = 0;
       state.sumComputerMatched = 0;
       state.sumMyMotions = 0;
