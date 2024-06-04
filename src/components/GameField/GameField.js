@@ -32,37 +32,46 @@ const GameField = () => {
   }, [isRotationDelay]);
 
   useEffect(() => {
-    if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
-      if (isComputerMotion === true) {
-        if (isRotationDelay == false) {
-          setTimeout(() => {
-            dispatch(flipCard())
-          }, 800);
-        }
-        if (prevSumComputerMotions.current !== sumComputerMotions) {
-          if (isRotationDelay) {
-            setTimeout(() => {
-              dispatch(enableFlipCard());
-            }, 800);
-            dispatch(matchCards());
+    if (isGameGoingOn) {
 
+      if (prevIsComputerMotion.current !== isComputerMotion || prevIsGameWithComputer.current !== isGameWithComputer || prevSumComputerMotions.current !== sumComputerMotions) {
+        if (isComputerMotion === true) {
+          if (isRotationDelay == false) {
+            setTimeout(() => {
+              dispatch(flipCard())
+            }, 800);
+          }
+          if (prevSumComputerMotions.current !== sumComputerMotions) {
+            if (isRotationDelay) {
+              setTimeout(() => {
+                dispatch(enableFlipCard());
+              }, 800);
+              dispatch(matchCards());
+
+            }
           }
         }
       }
     }
+
     prevIsComputerMotion.current = isComputerMotion;
     prevIsGameWithComputer.current = isGameWithComputer;
     prevSumComputerMotions.current = sumComputerMotions;
 
   }, [isComputerMotion, isGameWithComputer, sumComputerMotions, isRotationDelay]);
 
-  if (isGameGoingOn == false && sumComputerMotions > 1) {
-    if (sumComputerMatched > sumMyMatched) {
-      alert("Победил компьютер")
-    } else {
-      alert("Вы победили компьютер")
-    }
-  }
+  useEffect(() => {
+    // debugger
+    // if (isGameGoingOn == false && sumComputerMotions > 2) {
+    //   if (sumComputerMatched > sumMyMatched) {
+    //     alert("Победил компьютер")
+    //   } else {
+    //     alert("Вы победили компьютер")
+    //   }
+    //   // dispatch(setIsComputerMotion())
+    // }
+  }, [isGameGoingOn])
+
   return (
     <div className={s.game_field__page}>
       <div className={s.upper_game_field_block__wrapper}>

@@ -1,0 +1,20 @@
+.aboba {
+  display: flex;
+  text-align: center;
+  margin-top: 5vh;
+  width: 80vw;
+  height: 100vh;
+  font-size: 1.5vw;
+}
+
+@media (max-width: 840px){
+  .aboba {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1140px) and (max-width: 2000px) {
+  .upper_game_field_block__wrapper {
+    font-size: 22px;
+  }
+}

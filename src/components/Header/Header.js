@@ -21,9 +21,15 @@ const Header = () => {
   return (
     <div className={s.header_wrapper}>
       <div className={s.header}>
-        <div className={s.logo}>
-          <p className={s.logo_text}>MATCH</p>
+        <div className={`${s.logo} 
+           ${isRotationDelay || (isGameGoingOn && isComputerMotion) == true ? s.banned_click : ''}`}>
+                      <NavLink to="/about-game">
+
+          <p className={`${s.logo_text} ${s.upper}`}>MATCH</p>
           <p className={`${s.logo_text} ${s.below}`}>MATCH</p>
+                      </NavLink>
+
+
         </div>
 
         {location.pathname === '/game-field' ?

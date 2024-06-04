@@ -35,7 +35,6 @@ const SettingsPage = () => {
   }
 
   const handleButtinClick = (e) => {
-    console.log('Количество карточек:', cardCountFromBtn);
     if (cardCount > 4999 || cardCount < 2 && cardCountFromBtn === 0) {
       alert(`Вы ввели недопустимое количество \n(доступно от 2 до 4999)`)
     } else if (cardCount === '' && cardCountFromBtn === false) {
