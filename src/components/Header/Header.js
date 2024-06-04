@@ -13,7 +13,6 @@ const Header = () => {
   const isComputerMotion = useSelector(state => state.cards.isComputerMotion);
   const isGameGoingOn = useSelector((state) => state.cards.isGameGoingOn)
 
-  console.log(isRotationDelay);
   useEffect(() => {
     dispatch(shuffleCards())
     dispatch(shuffleCards())
@@ -36,7 +35,7 @@ const Header = () => {
             <button disabled={isRotationDelay || isComputerMotion} className={s.button}>Вернуться</button>
           </NavLink>
         }
-        <div className={s.settings}>
+        <div className={`${s.settings} ${isRotationDelay || isComputerMotion}`}>
           <NavLink to="/settings" className={s.settings_wrap}>
             <p className={s.img}></p>
           </NavLink>

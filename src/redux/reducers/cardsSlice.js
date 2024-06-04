@@ -5,6 +5,8 @@ import {
 } from './images.js';
 
 const initialState = {
+  test: null,
+  currentFlipCard: '',
   flippedCards: [],
   isGameWithComputer: true,
   isComputerMotion: false,
@@ -28,7 +30,7 @@ const initialState = {
   backgrounds: imagePathsBackgrounds,
   chosenBackground: null,
   isRotationDelay: false,
-  isGameGoingOn: false,
+  isGameGoingOn: null,
   sumCards: 10,
   sumMyMotions: 0,
   sumMyMatched: 0,
@@ -44,36 +46,89 @@ const cardsSlice = createSlice({
   reducers: {
     flipCard(state, action) {
       const payload = action.payload - 1;
+
       if (state.isGameWithComputer) {
-
-        if (state.isComputerMotion) {
-
-          const matchedPair = state.flippedCards.find(card1 => {
-            return state.flippedCards.some(card2 => {
-              return card1.id !== card2.id && 
-                     card1.groupId === card2.groupId && 
-                     state.cards[card1.id].isMatched === false && 
-                     state.cards[card2.id].isMatched === false;
-            });
-          });
-          if (matchedPair) {
-            debugger
-            console.log(matchedPair);
-          }
-          const random = Math.floor(Math.random() * state.cards.length)
-          state.cards[random].isFlipped = true
-          if (!state.flippedCards.some(card => card.id === random)) {
-            state.flippedCards = [...state.flippedCards, { id: random, groupId: state.cards[random].groupId, isMatched: state.cards[random].isMatched}]
-          }
-
+        if (state.isGameGoingOn == true) {
           
+        }
+        const matchedPairs = [];
+        state.flippedCards.forEach((card1, index1) => {
+          state.flippedCards.forEach((card2, index2) => {
+            if (index1 < index2 && // Ensure card1 comes before card2 to avoid duplicates
+              card1.groupId === card2.groupId &&
+              state.cards[card1.id].isMatched === false &&
+              state.cards[card2.id].isMatched === false) {
+              matchedPairs.push([card1, card2]);
+            }
+          });
+        });
+        state.test = matchedPairs
+        if (state.isComputerMotion) {
+          // Логика бота
+          if (state.test.length != 0) {
+            // Искать и переворачивать совпавшую
+            const [firstCard, secondCard] = state.test[0];
+            // Проверяем, не перевернута ли уже первая карта
+            if (!state.cards[firstCard.id].isFlipped) {
+              state.cards[firstCard.id].isFlipped = true;
+              state.currentFlipCard = firstCard.id; // Запоминаем перевернутую карту
+              state.flippedCards = [...state.flippedCards, firstCard];
+            } else {
+              // Переворачиваем вторую карту, если она не перевернута
+              state.cards[secondCard.id].isFlipped = true;
+              state.flippedCards = [...state.flippedCards, secondCard];
+              state.test.shift(); // Удаляем пару из test
+            }
+          } else {
+            // Выбрать карточку на рандом
+            let random;
+            do {
+              random = Math.floor(Math.random() * state.cards.length);
+            } while (
+              // Не должна быть уже перевернута и не должна быть в flippedCards с isMatched = false
+              state.cards[random].isFlipped ||
+              state.flippedCards.some(
+                (card) => card.id === random && state.cards[random].isMatched == false
+              )
+            );
+            state.cards[random].isFlipped = true
+            if (!state.flippedCards.some(card => card.id === random)) {
+              state.flippedCards = [...state.flippedCards, { id: random, groupId: state.cards[random].groupId }]
+            }
+
+          }
+
+          // если перевернуто 2 то запретить переворачивание и сменить сторону
           const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
           if (currentCoupleFlippedCards.length === 2) {
             state.cards.forEach((card) => {
               card.canFlip = false;
             });
             state.isRotationDelay = true;
+          } else {
+            // установить перевернувшуюся карту на данный момент, чтобы в следующем ходу перевернуть его пару, если есть)
+            const currentFlipCard = state.cards.filter(card => card.isFlipped && card.isMatched == false)
+            if (currentFlipCard.length == 0) {
+              state.currentFlipCard = "aboba"
+            } else {
+              state.currentFlipCard = currentFlipCard[0].id
+
+            }
           }
+          // создать и добавить в стейт массив одинаковых пар
+          const matchedPairs = [];
+          state.flippedCards.forEach((card1, index1) => {
+            state.flippedCards.forEach((card2, index2) => {
+              if (index1 < index2 && // Ensure card1 comes before card2 to avoid duplicates
+                card1.groupId === card2.groupId &&
+                state.cards[card1.id].isMatched === false &&
+                state.cards[card2.id].isMatched === false) {
+                matchedPairs.push([card1, card2]);
+              }
+            });
+          });
+          state.test = matchedPairs
+
           state.sumComputerMotions += 1
 
 
@@ -88,7 +143,7 @@ const cardsSlice = createSlice({
           state.cards[payload].canFlip = !state.cards[payload].canFlip;
 
           if (!state.flippedCards.some(card => card.id === payload)) {
-            state.flippedCards = [...state.flippedCards, { id: payload, groupId: state.cards[payload].groupId, isMatched: state.cards[payload].isMatched}]
+            state.flippedCards = [...state.flippedCards, { id: payload, groupId: state.cards[payload].groupId }]
           }
 
           const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
@@ -97,11 +152,26 @@ const cardsSlice = createSlice({
               card.canFlip = false;
             });
             state.isRotationDelay = true;
+            state.currentFlipCard = ''
           }
+          // создать и добавить в стейт массив одинаковых пар
+          const matchedPairs = [];
+          state.flippedCards.forEach((card1, index1) => {
+            state.flippedCards.forEach((card2, index2) => {
+              if (index1 < index2 && // Ensure card1 comes before card2 to avoid duplicates
+                card1.groupId === card2.groupId &&
+                state.cards[card1.id].isMatched === false &&
+                state.cards[card2.id].isMatched === false) {
+                matchedPairs.push([card1, card2]);
+              }
+            });
+          });
+          state.test = matchedPairs
+
           state.sumMyMotions += 1
         }
 
-
+        
 
 
       } else {
@@ -190,6 +260,7 @@ const cardsSlice = createSlice({
       state.sumComputerMotions = 0;
       state.isGameGoingOn = true;
       state.flippedCards = [];
+      state.test = []
 
       const backCardSide = state.chosenBackCardSide || state.backsCardSide[Math.floor(Math.random() * state.backsCardSide.length)];
       state.backsCardSide = imagePathsBackSideCard;
