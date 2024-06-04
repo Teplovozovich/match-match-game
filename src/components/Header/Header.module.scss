@@ -91,6 +91,10 @@
   background-repeat: no-repeat;
 };
 
+.banned_click {
+  pointer-events: none;
+}
+
 @media (hover: hover) {
   .button:hover {
     background-color: $btn-active-hover-color;

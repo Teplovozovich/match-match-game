@@ -28,15 +28,17 @@ const Header = () => {
 
         {location.pathname === '/game-field' ?
           <NavLink to="/game-field" className={s.button_wrapper}>
-            <button disabled={isRotationDelay || isComputerMotion} className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
+            <button disabled={isRotationDelay || (isGameGoingOn && isComputerMotion)} className={s.button} onClick={() => dispatch(shuffleCards())}>Перемешать</button>
           </NavLink> :
 
           <NavLink to="/game-field" className={s.button_wrapper}>
-            <button disabled={isRotationDelay || isComputerMotion} className={s.button}>Вернуться</button>
+            <button disabled={isRotationDelay || (isGameGoingOn && isComputerMotion)} className={s.button}>Вернуться</button>
           </NavLink>
         }
         <div className={`${s.settings} ${isRotationDelay || isComputerMotion}`}>
-          <NavLink to="/settings" className={s.settings_wrap}>
+          <NavLink to="/settings"
+           className={`${s.settings_wrap} 
+           ${isRotationDelay || (isGameGoingOn && isComputerMotion) == true ? s.banned_click : ''}`}>
             <p className={s.img}></p>
           </NavLink>
         </div>
