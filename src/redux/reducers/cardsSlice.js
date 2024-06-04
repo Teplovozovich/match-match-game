@@ -246,9 +246,8 @@ const cardsSlice = createSlice({
     setSelectedBackgroundSideCard(state, action) {
       state.chosenBackground = action.payload;
     },
-    setGameWithComputer(state) {
-      console.log("aboba");
-      state.isGameWithComputer = !state.isGameWithComputer;
+    setGameWithComputer(state, action) {
+      state.isGameWithComputer = action.payload;
     },
     setFrontSideCard(state, action) {
       state.chosenFrontCardSide = action.payload;

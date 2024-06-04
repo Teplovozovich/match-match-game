@@ -16,6 +16,7 @@ const GameField = () => {
   const isRotationDelay = useSelector(state => state.cards.isRotationDelay);
   const isComputerMotion = useSelector(state => state.cards.isComputerMotion);
   const isGameWithComputer = useSelector(state => state.cards.isGameWithComputer);
+  const isGameGoingOn = useSelector((state) => state.cards.isGameGoingOn)
 
   const prevIsComputerMotion = useRef(isComputerMotion); // Инициализируем useRef
   const prevIsGameWithComputer = useRef(isGameWithComputer); // Инициализируем useRef
@@ -55,6 +56,13 @@ const GameField = () => {
 
   }, [isComputerMotion, isGameWithComputer, sumComputerMotions, isRotationDelay]);
 
+  if (isGameGoingOn == false && sumComputerMotions > 1) {
+    if (sumComputerMatched > sumMyMatched) {
+      alert("Победил компьютер")
+    } else {
+      alert("Вы победили компьютер")
+    }
+  }
   return (
     <div className={s.game_field__page}>
       <div className={s.upper_game_field_block__wrapper}>

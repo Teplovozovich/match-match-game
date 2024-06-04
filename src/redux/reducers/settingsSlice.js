@@ -82,7 +82,6 @@ const cardsSlice = createSlice({
     setCardCountFromBtn(state, action) {
       state.amountButtons = state.amountButtons.map((button) => {
         if (+action.payload === button.amount) {
-          console.log("aboba");
           return { ...button, style: "selected" };
         } else {
           return { ...button, style: "" };
