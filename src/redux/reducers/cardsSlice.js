@@ -185,7 +185,7 @@ const cardsSlice = createSlice({
         if (action.payload.length != 0) {
           state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
           state.cards[payload].canFlip = !state.cards[payload].canFlip;
-        } 
+        }
         const currentCoupleFlippedCards = state.cards.filter(card => card.isFlipped && !card.isMatched);
 
         if (currentCoupleFlippedCards.length === 2) {
@@ -205,7 +205,6 @@ const cardsSlice = createSlice({
       }
     },
     enableFlipCard(state, action) {
-
       if (state.isGameWithComputer === true) {
         if (state.isGameGoingOn == true) {
 
@@ -217,7 +216,7 @@ const cardsSlice = createSlice({
               card.isFlipped = false;
             }
           });
-          
+
           state.isComputerMotion = !state.isComputerMotion
           state.isRotationDelay = false;
         }
@@ -277,12 +276,16 @@ const cardsSlice = createSlice({
       state.chosenFrontCardSide = action.payload;
     },
     shuffleCards: (state) => {
-      if (state.sumComputerMatched > state.sumMyMatched && state.isGameWithComputer) {
-        state.isComputerMotion = false
-      } else if (state.sumComputerMatched < state.sumMyMatched && state.isGameWithComputer) {
-        state.isComputerMotion = true
-      } else {
-
+      if (state.sumComputerMotions !=0 ) {
+  
+        
+        if (state.sumComputerMatched > state.sumMyMatched && state.isGameWithComputer) {
+          state.isComputerMotion = false
+        } else if (state.sumComputerMatched < state.sumMyMatched && state.isGameWithComputer) {
+          state.isComputerMotion = true
+        } else {
+          state.isComputerMotion = false
+        }
       }
 
       state.sumMyMatched = 0;
