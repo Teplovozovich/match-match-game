@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   imagePathsBackSideCard, imagePathsBackgrounds,
   imagePathsRodent, imagePathsFood, imagePathsFruits,
+  imagePaths_buildings,
 } from './images.js';
 
 const initialState = {
@@ -23,7 +24,7 @@ const initialState = {
     groupId: null,
   }
   ],
-  imagesGroups: [imagePathsRodent, imagePathsFood, imagePathsFruits],
+  imagesGroups: [imagePathsRodent, imagePathsFood, imagePathsFruits, imagePaths_buildings],
   chosenFrontCardSide: null,
   backsCardSide: [],
   chosenBackCardSide: null,

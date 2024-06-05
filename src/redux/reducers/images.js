@@ -1,12 +1,18 @@
 const rodent = require.context('./../../../public/assets/images/rodent', true, /\.jpg$/);
 const food = require.context('./../../../public/assets/images/food', true, /\.jpg$/);
 const fruits = require.context('./../../../public/assets/images/fruits', true, /\.jpg$/);
+const buildings = require.context('./../../../public/assets/images/buildings', true, /\.jpg$/);
 
 const backSideCard = require.context('./../../../public/assets/images/back-side-card', true, /\.jpg$/);
 const backgrounds = require.context('./../../../public/assets/images/numbers-background', true, /\.jpg$/);
 
 
 
+
+const imagePaths_buildings = buildings.keys().map(image => {
+    const imagePath = "assets/images/buildings" + image;
+    return imagePath.replace("./", '/');
+});
 
 const imagePathsFruits = fruits.keys().map(image => {
     const imagePath = "assets/images/fruits" + image;
@@ -36,6 +42,6 @@ const imagePathsBackgrounds = backgrounds.keys().map(image => {
 export {
     imagePathsBackSideCard, imagePathsBackgrounds,
     imagePathsFood, imagePathsRodent, imagePathsFruits,
-
+    imagePaths_buildings,
 }
 
