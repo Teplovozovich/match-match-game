@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   imagePathsBackSideCard, imagePathsBackgrounds,
   imagePathsRodent, imagePathsFood, imagePathsFruits,
-  imagePaths_buildings,
+  imagePaths_buildings, imagePaths_animals, imagePaths_arts
 } from './images.js';
 
 const initialState = {
@@ -14,6 +14,7 @@ const initialState = {
   isComputerFirstMotion: true,
   sumComputerMotions: 0,
   sumComputerMatched: 0,
+  sumComputerPrevMatched: 0,
   cards: [{
     id: null,
     cardFont: null,
@@ -24,7 +25,7 @@ const initialState = {
     groupId: null,
   }
   ],
-  imagesGroups: [imagePathsRodent, imagePathsFood, imagePathsFruits, imagePaths_buildings],
+  imagesGroups: [imagePathsRodent, imagePathsFood, imagePathsFruits, imagePaths_animals, imagePaths_arts, imagePaths_buildings,],
   chosenFrontCardSide: null,
   backsCardSide: [],
   chosenBackCardSide: null,
@@ -35,6 +36,7 @@ const initialState = {
   sumCards: 10,
   sumMyMotions: 0,
   sumMyMatched: 0,
+  sumMyPrevMatched: 0,
 };
 
 function importAll(r) {
@@ -55,6 +57,16 @@ const cardsSlice = createSlice({
 
       if (state.isGameWithComputer) {
         if (state.isGameGoingOn == true) {
+
+          // if (state.sumComputerPrevMatched > state.sumComputerMatched) {
+          //   state.isComputerMotion = true
+          //   state.sumComputerPrevMatched = state.sumComputerMatched
+          // } else if (state.sumMyPrevMatched > state.sumMyMatched) {
+          //   state.isComputerMotion = false
+          //   state.sumMyPrevMatched = state.sumMyMatched
+          // } else {
+          //   state.isComputerMotion = !state.isComputerMotion
+          // }
 
           const matchedPairs = [];
           state.flippedCards.forEach((card1, index1) => {
@@ -136,13 +148,6 @@ const cardsSlice = createSlice({
 
             state.sumComputerMotions += 1
 
-
-
-
-
-
-
-
           } else {
             state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
             state.cards[payload].canFlip = !state.cards[payload].canFlip;
@@ -182,6 +187,8 @@ const cardsSlice = createSlice({
             }
           }
         }
+
+
       } else {
         if (action.payload.length != 0) {
           state.cards[payload].isFlipped = !state.cards[payload].isFlipped;
