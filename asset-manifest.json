@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/match-match-game/static/css/main.8986ab3a.css",
-    "main.js": "/match-match-game/static/js/main.ff8de515.js",
+    "main.js": "/match-match-game/static/js/main.d5fa312e.js",
     "static/js/453.8130b2eb.chunk.js": "/match-match-game/static/js/453.8130b2eb.chunk.js",
     "static/media/safaf-image.jpg": "/match-match-game/static/media/safaf-image.6cf714cf73047824431b.jpg",
     "static/media/belochka.jpg": "/match-match-game/static/media/belochka.7145a24bbfb821dc0064.jpg",
@@ -24,6 +24,7 @@
     "static/media/1644967060_4-fikiwiki-com-p-kartinki-nutrii-5_2_11zon.jpg": "/match-match-game/static/media/1644967060_4-fikiwiki-com-p-kartinki-nutrii-5_2_11zon.a1c5d7796b637e1cf9dc.jpg",
     "static/media/2017Food___Berries_and_fruits_and_nuts_Three_ripe_large_apricots_on_a_white_background_115744__7_11zon.jpg": "/match-match-game/static/media/2017Food___Berries_and_fruits_and_nuts_Three_ripe_large_apricots_on_a_white_background_115744__7_11zon.f73b77dd59c7c639bcd7.jpg",
     "static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m_15_11zon.jpg": "/match-match-game/static/media/unns8lkbea3u1umdclc4kyl52hjbmh4m_15_11zon.be7275a4b0e942b3833d.jpg",
+    "static/media/photo_2024-06-07_18-11-12 (2)_11zon.jpg": "/match-match-game/static/media/photo_2024-06-07_18-11-12 (2)_11zon.f0d7f0b0ab3be7d6082a.jpg",
     "static/media/_11_11zon.jpg": "/match-match-game/static/media/e519b35ff6d4d37b75b36d75dc722288_11_11zon.812c3c16badf6d2fe113.jpg",
     "static/media/1695992747_animals-pibig-info-p-rizhii-kenguru-avstralii-krasivo-1_12_11zon.jpg": "/match-match-game/static/media/1695992747_animals-pibig-info-p-rizhii-kenguru-avstralii-krasivo-1_12_11zon.e7fc24ee6f3f6436ac91.jpg",
     "static/media/1647704789_3-amiel-club-p-kartinki-milikh-krolikov-3_6_11zon.jpg": "/match-match-game/static/media/1647704789_3-amiel-club-p-kartinki-milikh-krolikov-3_6_11zon.da4954141420d8180f3d.jpg",
@@ -147,11 +148,11 @@
     "index.html": "/match-match-game/index.html",
     "static/media/checkmark.svg": "/match-match-game/static/media/checkmark.d916961e04b5f466942b.svg",
     "main.8986ab3a.css.map": "/match-match-game/static/css/main.8986ab3a.css.map",
-    "main.ff8de515.js.map": "/match-match-game/static/js/main.ff8de515.js.map",
+    "main.d5fa312e.js.map": "/match-match-game/static/js/main.d5fa312e.js.map",
     "453.8130b2eb.chunk.js.map": "/match-match-game/static/js/453.8130b2eb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8986ab3a.css",
-    "static/js/main.ff8de515.js"
+    "static/js/main.d5fa312e.js"
   ]
 }
